@@ -1,0 +1,12 @@
+---
+
+#Deploy the Spring App Code-base for different aws-zones
+- name: Run the Spring App
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking host as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: run_app, tags: ['run_app'] }

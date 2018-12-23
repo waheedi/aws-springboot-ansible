@@ -1,0 +1,11 @@
+---
+
+
+- name: Install python for Ansible use (Facts gathering)
+  raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal)
+  changed_when: False
+
+
+- name: Link python3 to python in bin dir
+  raw: ln -s /usr/bin/python3 /usr/bin/python
+  changed_when: False

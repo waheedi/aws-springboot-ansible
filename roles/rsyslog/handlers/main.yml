@@ -1,0 +1,5 @@
+---
+# Handlers for common notifications
+
+- name: restart rsyslog
+  service: name=rsyslog state=restarted enabled=yes

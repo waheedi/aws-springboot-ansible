@@ -1,0 +1,24 @@
+---
+
+- name: Installing HAProxy
+  package: 
+    name: haproxy 
+    state: latest
+ 
+- name: Copy the HAProxy config file in place
+  template: 
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Enable HAProxy
+  lineinfile: 
+    dest: /etc/default/haproxy 
+    regexp: ^ENABLED=
+    line: ENABLED=1
+
+- name: Start HAProxy
+  service: 
+    name: haproxy 
+    state: restarted
+    enabled: yes

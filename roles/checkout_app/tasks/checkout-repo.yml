@@ -1,0 +1,15 @@
+---
+
+- name: Check that we have a repo already
+  stat: 
+    path: "/var/www/spring_app_{{aws_profile}}_{{ item }}"
+  register: app_cloned
+
+- name: Checkout our awesome App for our branch
+  git:
+    repo: "{{ app_git_url }}"
+    dest: "/var/www/spring_app_{{aws_profile}}_{{ item }}"
+    version: "{{ branch }}"
+    force: yes
+    key_file: "~/.ssh/{{ git_key }}"
+  when: app_cloned.stat.exists

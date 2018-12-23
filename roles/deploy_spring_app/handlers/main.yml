@@ -1,0 +1,7 @@
+---
+
+- name: reload haproxy
+  service: name=haproxy state=reloaded
+
+- name: reload nginx
+  service: name=nginx state=reloaded

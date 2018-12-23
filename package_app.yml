@@ -1,0 +1,12 @@
+---
+
+#Package the Spring App Code-base
+- name: Package the Spring App
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: package_app, tags: ['package_app'] }

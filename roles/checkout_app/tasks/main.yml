@@ -1,0 +1,8 @@
+---
+
+- include: clone-repo.yml
+  with_items:
+    - "{{ range(1, app_instances + 1 ) | list }}"
+- include: checkout-repo.yml
+  with_items:
+    - "{{ range(1, app_instances + 1 ) | list }}"

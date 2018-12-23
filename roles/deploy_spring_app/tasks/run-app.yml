@@ -1,0 +1,25 @@
+---
+
+- name: Stop Spring App Tomcat server
+  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop"
+  ignore_errors: yes
+
+- name: Start Spring App Tomcat server
+  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start --spring.profiles.active={{ aws_profile }}"
+  notify:
+    - reload nginx
+    - reload haproxy
+
+- name: Let's test the app and services are running
+  uri:
+    url: "http://localhost"
+    return_content: yes
+  register: test_response
+
+- name: Pause, let's wait a bit for the Spring app to pickup
+  pause: seconds=5
+
+- name: Ensure the app is doing what we want, if not we will pause the playbook
+  pause: seconds="120"
+  when: 'not "home" in test_response.content'
+  ignore_errors: yes

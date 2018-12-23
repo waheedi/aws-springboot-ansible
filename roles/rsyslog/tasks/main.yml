@@ -1,0 +1,9 @@
+- name: Enable network logging for rsyslog. 
+  copy: src={{ item }} dest=/etc/rsyslog.d/
+  with_items:
+    - network.conf
+    - haproxy.conf
+  tags:
+    - rsyslog
+  notify:
+    - restart rsyslog

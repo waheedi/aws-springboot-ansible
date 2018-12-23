@@ -1,0 +1,39 @@
+---
+
+- name: Nginx preinstallation
+  apt_repository: repo='ppa:nginx/stable'
+  tags:
+    - nginx
+    - apt
+
+- name: Nginx Installation
+  apt: pkg=nginx-full state=present update_cache=yes
+
+- name: Nginx proxy configuration upload
+  copy: src=proxy.conf dest=/etc/nginx/conf.d/ mode=0644
+  notify:
+    - restart nginx
+  tags:
+     - nginx
+
+- name: Upload site configuration
+  template: src={{ item }} dest=/etc/nginx/sites-available/
+  with_items:
+    - proxy_spring
+  notify:
+    - restart nginx
+
+- name: Disable default site
+  file: dest=/etc/nginx/sites-enabled/default state=absent
+
+- name: Enable site configuration 
+  file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
+  with_items:
+    - proxy_spring
+  notify:
+    - restart nginx
+
+- name: Start loadbalancer nginx
+  service: name=nginx state=restarted enabled=yes
+  tags:
+    - nginx

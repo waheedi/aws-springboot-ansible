@@ -1,0 +1,12 @@
+[Unit]
+Description=Spring App {{ aws_profile }} {{ item }}
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+ExecStart=
+WorkingDirectory=
+
+[Install]
+WantedBy=multi-user.target

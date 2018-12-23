@@ -1,0 +1,59 @@
+---
+# This role contains common plays that will run on all nodes.
+
+- name: Setup needed packages
+  apt: 
+    name: ['ntp', 'screen', 'vim', 'strace', 'lsof', 'htop', 'curl', 'locales', 'default-jdk',
+'default-jdk-doc', 'libtcnative-1', 'maven', 'libapr1-dev']
+    state: latest
+    update_cache: yes
+    install_recommends: no
+
+- name: Start NTP
+  service: 
+    name: ntp 
+    state: started 
+    enabled: yes
+
+- name: Enable Screen Scrolling
+  lineinfile: dest=/etc/screenrc line="termcapinfo xterm|xterms|xs|rxvt ti@:te@" insertafter=EOF
+
+- name: Enable timed BASH log
+  lineinfile: dest=/etc/bash.bashrc line='export HISTTIMEFORMAT="%F %T "' insertafter=EOF
+
+- name: Set locale
+  command: locale-gen en_US.UTF-8
+
+#- name: create springapp groups
+#  group: 
+#    name: springapp
+#    system: no
+#  become: True
+#  tags:
+#    - users
+#
+#- name: Add springapp group to sudoers
+#  lineinfile: "dest=/etc/sudoers.springapp_group create=yes line='%springapp ALL=NOPASSWD: ALL' state=present mode=440"
+#  tags:
+#    - users
+
+- name: Disable SSH PasswordAuthentication
+  lineinfile: dest=/etc/ssh/sshd_config line="PasswordAuthentication no" state=present
+  notify:
+    - sshd restart
+
+- name: Make sure SSH PasswordAuthentication is disabled
+  lineinfile: dest=/etc/ssh/sshd_config line="PasswordAuthentication yes" state=absent
+  notify:
+    - sshd restart
+  tags: 
+    - ssh
+
+- name: Disabled DNS lookup
+  lineinfile: dest=/etc/ssh/sshd_config line="UseDNS no" state=present
+  notify:
+    - sshd restart
+  tags: 
+    - ssh
+
+- include: git-access.yml

@@ -1,0 +1,20 @@
+---
+
+# This playbook deploys the infrastrcture
+
+- name: Launch needed EC2 instances and services
+  hosts: local
+  connection: local
+  roles:
+    - { role: aws_ec2_key, tags: ['aws_set_key'], when: create_ec2_instances } # Populate or create they key to be assigned to our instances 
+    - { role: aws_ec2_instances, tags: ['create_ec2_services'], when: create_ec2_instances } # At minimum, create two instances in two different 'available' Availablity-Zones
+  
+- name: Pre deploy install python
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  gather_facts: no
+  become: yes
+  roles:
+    - { role: minimal_python, tags: ['minimal_python'] }

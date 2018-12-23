@@ -1,0 +1,5 @@
+---
+  
+- include: package-app.yml
+  with_items:
+    - "{{ range(1, app_instances + 1 ) | list }}"

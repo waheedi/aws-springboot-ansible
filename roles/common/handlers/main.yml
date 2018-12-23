@@ -1,0 +1,14 @@
+---
+# Handlers for common notifications
+
+- name: sshd restart
+  service: 
+    name: ssh 
+    state: restarted 
+    enabled: yes
+
+- name: restart rsyslog
+  service: 
+    name: rsyslog
+    state: restarted
+    enabled: yes

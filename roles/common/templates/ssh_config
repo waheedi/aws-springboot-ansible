@@ -1,0 +1,4 @@
+Host *
+  IdentityFile ~/.ssh/{{ git_key  }}
+  IdentitiesOnly yes
+  StrictHostKeyChecking no

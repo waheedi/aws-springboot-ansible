@@ -1,0 +1,70 @@
+---
+
+- name: Get the target instance zone name
+  uri:
+    url: http://169.254.169.254/latest/meta-data/placement/availability-zone
+    return_content: yes
+  register: response
+
+- name: Chown dirctory to user other than root
+  file: 
+    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}" 
+    owner: "{{ ansible_user }}"
+    recurse: yes
+    mode: u=rwX,g=rX,o=rX
+
+- name: Set fact for target instance zone name
+  set_fact:
+    zone_name: "{{ response.content }}"
+
+- name: Set App version for our Spring app
+  set_fact:
+    app_version: "{{ ansible_date_time.epoch }}-{{ aws_profile }}-{{ branch }}"
+  when: app_version is not defined
+
+- name: Set a new version number for our Spring App
+  lineinfile:
+    dest: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml"
+    regexp: "<version>"
+    line: "<version>{{ app_version }}</version>"
+    state: present
+  when: update_version
+
+- name: Configure our application.proprties to include zone name property as well as other properties
+  template: 
+    src: application.properties
+    dest: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/src/main/resources/application-{{ aws_profile }}.properties"
+
+- name: Set our profile in application proprties
+  blockinfile:
+    dest: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml"
+    insertafter: "<profiles>"
+    marker: "<!-- ANSIBLE MANAGED PROFILE BLOCK {{ aws_profile }} -->"
+    content: |
+      <profile>
+          <id>{{ aws_profile }}</id>
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+      </profile>
+
+- name: Package our Spring App
+  command: "mvn clean package -f /var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml --activate-profiles {{ aws_profile }}"
+  
+- name: Get Spring App name 
+  command: mvn -q -Dexec.executable=echo -Dexec.args='${project.name}' --non-recursive exec:exec -f /var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml
+  register: app_name
+
+- name: Link our jar file to services
+  file: 
+    path: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}" 
+    state: link 
+    src: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/target/{{ app_name.stdout }}-{{ app_version }}.jar"
+    follow: no
+
+- name: Chown dirctory to user other than root
+  file: 
+    path: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}" 
+    owner: "{{ ansible_user }}"
+    mode: u=rwX,g=rX,o=rX
+

@@ -1,0 +1,12 @@
+---
+
+#Checkout the Spring App Code-base
+- name: Checkout the Spring App
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: checkout_app, tags: ['checkout_app'] }

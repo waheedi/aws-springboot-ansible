@@ -1,0 +1,38 @@
+---
+
+#how many instances of the Spring app we want to run in a single sever
+app_instances: 2
+
+#the default base port for our 
+app_port: 8080
+
+haproxy_springapps_port: 8888
+
+aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}"
+
+#ssh key
+aws_key_name: waheed
+ansible_ssh_private_key_file: "~/.ssh/{{ aws_key_name }}"
+ansible_user: ubuntu
+
+#git repo vars
+git_key: ec2-new
+app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
+branch: master
+
+#a marker to fail accidental run for create ec2s
+create_ec2_instances: yes
+
+#How many instance per az
+instances_count: 1
+
+#How many azs we need for production only
+az_count: 2
+
+#default instance type for our run
+aws_instance_type: t2.micro
+
+#auto update the Spring App version using our versioning, maybe can be better used with mvn:commit 
+update_version: yes
+
+rsyslog_server: localhost

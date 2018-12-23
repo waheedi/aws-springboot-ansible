@@ -1,0 +1,33 @@
+---
+
+#please make sure the prv key file is in the right path, if not the Play will not Play the git clone :)
+#also add the .pub to your gitlab or github keys
+
+- name: Git access for our host
+  stat: path=~/.ssh/{{ git_key }}
+  register: prv_key
+  changed_when: false
+
+- name: Create SSH key pair
+  shell: >
+    ssh-keygen -q -t rsa -b 4096 -N '' -C "" -f ~/.ssh/{{ git_key }}
+  when: prv_key.stat.exists == false
+
+# this can be done in a better fashion using api for git service in place,
+- name: Read content of public key for Git repo keys
+  slurp: src="~/.ssh/{{ git_key }}.pub"
+  register: pub_key
+
+- name: Public Key to be added to Git repo
+  debug:
+    msg:  "git_pub_key: {{ pub_key['content'] | b64decode  }}"
+
+#for some reason the key_file in the git module is not picking it up
+- name: Configuration file for ssh 
+  template: 
+    src: ssh_config
+    dest: "~/.ssh/config"
+
+- name: Pause, let's add the public keys to our git service
+  pause: seconds="120"
+

@@ -1,0 +1,112 @@
+---
+
+#I'm just a playbook for quick trial and error :)
+
+- hosts: local
+  connection: local
+  vars:
+    instances_count: 5
+    aws_profile: prod
+    instances_ids: [1,2,3,4]
+  tasks:
+ # - block:
+ #   - debug: var=item
+ #     with_flattened:
+ #       - "{{ range(1, (instances_ids | length + 1) ) | list }}"
+ # - name: Wait for SSH to come up
+ #   delegate_to: "35.177.89.151"
+ #   wait_for_connection:
+ #     delay: 15
+ #     timeout: 60 
+  - name: Let's test the app and services are running
+    uri:
+      url: "http://localhost:8080"
+      return_content: yes
+    register: test_response
+
+  - name: Ensure the app is doing what we want, if not we will pause the playbook
+    pause: seconds="120"
+    when: 'not "home" in test_response.content'
+
+
+ # - name: Link python3 to python in bin dir
+ #   file: 
+ #     dest: /usr/bin/python
+ #     state: link
+ #     src: /usr/bin/python3
+ #     force: yes
+  # - name: check uri response
+  #   uri:
+  #     url: http://localhost:8080/hello
+  #     return_content: yes
+  #   register: response
+
+  # - debug: var=response.content  
+
+    #- name: Check package module with brew
+    #  package:
+    #    name: awscli
+    #    state: present
+
+    #- debug:
+    #    msg: "{{item}}"
+    #  with_items:
+    #    - "{{ range(1, instances_count + 1) | list }}"
+
+  #- name: Add profile inventory to hosts
+  #  lineinfile: 
+  #    dest: "{{ inventory_dir }}/hosts"
+  #    line: "[{{ aws_profile }}]"
+  #    state: present
+
+  #- name: Add the newly created EC2 instances to the local host group
+  #  lineinfile:
+  #    dest: "{{ inventory_dir }}/hosts"
+  #    insertafter: '\[prod\]'
+  #    line: "{{ instances_count }}"
+  #    state: present
+
+       
+ # - name: PSEUDO Set AZ2 instances fact 
+ #   set_fact:
+ #     az2_instances: []
+ #   when: casd is not defined 
+
+ # - debug: var=az2_instances
+
+ # - debug: var=az2_instances
+ #   when: az2_instances is not defined
+ # - debug: 
+ #     msg: "{{ az2_instances + [1,2] }}"
+
+
+ # - name: get region variable from aws profiles for specific profile
+ #   shell: "{{ item }}"
+ #   with_items: 
+ #      - "export AWS_DEFAULT_PROFILE={{ aws_profile }}"
+ #      - "eval $( {{ inventory_dir }}/set_aws_region.py )"
+ #
+ # - name: get azs that are available in our region
+ #   aws_az_facts:
+ #      profile: "{{ aws_profile }}"
+ #      filters:
+ #        state: "available"
+ #   register: aws_az    
+ # 
+ # - debug: var=aws_profile
+ # - debug: var=aws_az
+  
+  # - name:  Get AMI for Ubuntu in our region
+  #   ec2_ami_facts:
+  #     profile: "{{ aws_profile }}"
+  #     owners:  099720109477
+  #     filters: 
+  #       name: "ubuntu/images/*/ubuntu-*-18.04-*"
+  #       root-device-type: "ebs"
+  #       state: "available"
+  #   register: ami_find
+  
+  # - debug:
+  #     msg: "{{ ami_find.images | last | json_query('image_id') }} and 
+  #     aws_profile {{ aws_profile }}"
+

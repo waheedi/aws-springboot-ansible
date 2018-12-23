@@ -1,0 +1,34 @@
+---
+
+# This playbook deploys the infrastrcture and the Spring app
+
+- name: Launch needed EC2 instances and services
+  hosts: local
+  connection: local
+  roles:
+    - { role: aws_ec2_key, tags: ['aws_set_key'], when: create_ec2_instances } # Populate or create they key to be assigned to our instances 
+    - { role: aws_ec2_instances, tags: ['create_ec2_services'], when: create_ec2_instances } # At minimum, create two instances in two different 'available' Availablity-Zones
+  
+- name: Pre-play install Python with raw command
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  gather_facts: no
+  become: yes
+  roles:
+    - { role: minimal_python, tags: ['minimal_python'] }
+
+- name: Deploy the Spring App
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}"
+  hosts:
+    - "{{ aws_profile }}"
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: common, tags: ['common'] } # java and maven are also installed here
+    - { role: haproxy, tags: ['haproxy'] } # haproxy installation and configuration, load balancing between spring apps
+    - { role: rsyslog, tags: ['rsyslog'] } # rsyslog configuration, enable for haproxy    
+    - { role: nginx, tags: ['nginx'] } # nginx installation and configuration, proxying to haproxy from elb.
+    - { role: deploy_spring_app, tags: ['deploy_spring_app'] } # this is a collection of tasks to clone/checkout/package/run an app

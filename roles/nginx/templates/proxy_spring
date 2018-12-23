@@ -1,0 +1,16 @@
+#haproxy running on 8888, its better to have a clear request/response overview nginx will proxy directly to this port
+
+upstream haproxy_servers {
+  server localhost:{{ haproxy_springapps_port }} max_fails=3 fail_timeout=20s;
+}
+
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name _;
+  access_log /var/log/nginx/haproxy_spring.log;
+
+  location / {
+    proxy_pass http://haproxy_servers;
+  }
+}
