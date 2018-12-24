@@ -48,6 +48,11 @@
           </activation>
       </profile>
 
+- name: Remove previous target for Spring App
+  file:
+    state: absent
+    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/target/"
+
 - name: Package our Spring App
   command: "mvn clean package -f /var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml --activate-profiles {{ aws_profile }}"
   

@@ -1,7 +1,7 @@
 ---
 
 - name: Stop Spring App Tomcat server
-  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop"
+  command: "LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop"
   ignore_errors: yes
 
 - name: Start Spring App Tomcat server

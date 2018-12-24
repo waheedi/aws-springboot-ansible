@@ -22,7 +22,7 @@ ansible_user: ubuntu
 
 #git repo vars
 git_key: ec2-new
-app_git_url: "git@gitlab.com:waheedi/spring-time-app.git"
+app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
 branch: master
 
 #a marker to fail accidental run for create ec2s

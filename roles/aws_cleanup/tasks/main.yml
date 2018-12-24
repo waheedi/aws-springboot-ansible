@@ -12,7 +12,7 @@
 
 - name: Delete Route53 record
   route53:
-    state: absent
+    state: delete
     zone: "{{ route53_zone }}"
     type: A
     record: "{{ hello_dns }}"
