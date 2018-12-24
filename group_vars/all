@@ -31,13 +31,13 @@ create_ec2_instances: yes
 #How many ec2 instances per az
 instances_count: 1
 
-#How many azs we need for production only
+#How many azs we need. TODO
 az_count: 2
 
 #default ec2 instance type for our run
 aws_instance_type: t2.micro
 
-#auto update the Spring App version using our versioning, maybe can be better used with mvn:commit 
+#auto update the Spring App version using a versioning scheme (epoch-aws-profile), maybe can be better used with mvn:commit 
 update_version: yes
 
 rsyslog_server: localhost

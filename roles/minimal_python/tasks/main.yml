@@ -8,4 +8,5 @@
 
 - name: Link python3 to python in bin dir
   raw: ln -s /usr/bin/python3 /usr/bin/python
+  ignore_errors: yes
   changed_when: False

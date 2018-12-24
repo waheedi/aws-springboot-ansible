@@ -245,7 +245,15 @@
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
     regexp: 'instance_ids' 
     line: 'instance_ids: "{{ springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
-  when: (az2_instances | length > 0)
+  when: (az2_instances | length > 0) and (instance_ids is not defined)
+  changed_when: False
+
+- name: Add instance_ids to current run profile az1 + az2 to previous run instance_ids
+  lineinfile:
+    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
+    regexp: 'instance_ids' 
+    line: 'instance_ids: "{{ instance_ids + springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
+  when: (az2_instances | length > 0) and (instance_ids is defined)
   changed_when: False
 
 - name: Add meta data for the newly created EC2 Security Group to the var group
@@ -297,6 +305,3 @@
 - name: Pause, let's wait a bit for the machines to start
   pause: 
     seconds: 20
-
-- debug:
-    msg: "Now let's run the role deploy_spring_app"

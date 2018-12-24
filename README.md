@@ -78,12 +78,12 @@ aws_secret_access_key =
 ---
 
 #### Deploy the infrastrcture and the spring app
-- Configure the AMI for the user running the deployment, ec2,route53,sts,elasticloadbalancing,apigateway
+- Configure the AMI for the user running the deployment, `ec2,route53,sts,elasticloadbalancing,apigateway`
 - We need to specify a git url for the app to clone, configure the number of app instaces for each ec2 instance in the groups_vars/all file, which has all the default values for our playbooks
-- Run the full deploy: AWS_DEFAULT_PROFILE=prod-time-app-east ansible-playbook -i hosts full_deploy.yml, note the env variable, you can surely specify it in different ways
+- Run the full deploy: `AWS_DEFAULT_PROFILE=prod-time-app-east ansible-playbook -i hosts full_deploy.yml`, note the env variable, you can surely specify it in different ways
 - During the play you will have two copy the public keys of the new instances to the git service, it will pause for two minutes, we can automate this for github or gitlab but for now its sufficient 
-- deploy to another region by changing the AWS_DEFAULT_PROFILE to the desired profile/region. AWS_DEFAULT_PROFILE=prod-time-app-west ansible-playbook -i hosts full_deploy.yml
-- now as we have two regions running we can use route53 to load balance/health check on two elbs that have been created, just run deploy_to_route53.yml with two env variables AWS_DEFAULT_PROFILE=prod-time-app-west and AWS_SECOND_PROFILE=prod-time-app-east
+- deploy to another region by changing the `AWS_DEFAULT_PROFILE` to the desired profile/region. `AWS_DEFAULT_PROFILE=prod-time-app-west ansible-playbook -i hosts full_deploy.yml`
+- now as we have two regions running we can use route53 to load balance/health check on two elbs that have been created, just run deploy_to_route53.yml with two env variables `AWS_DEFAULT_PROFILE=prod-time-app-west and AWS_SECOND_PROFILE=prod-time-app-east`
 - Please note, the name of aws_profile cannot contain characters that are not letters, or digits or dash (-)
 
 ---

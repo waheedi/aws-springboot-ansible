@@ -20,4 +20,3 @@
     max_size: "{{ az_count }}"
     desired_capacity: "{{ az_count }}"
     region: "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"
-  when: aws_profile_2 is defined

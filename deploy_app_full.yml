@@ -1,0 +1,17 @@
+---
+
+# Deploy the Spring app, including nginx, haproxy, incase ports have changed
+
+- name: Deploy the Spring App
+  vars:
+    aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
+  hosts:
+    - "{{ aws_profile }}"
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: common, tags: ['common'] } # java and maven are also installed here
+    - { role: haproxy, tags: ['haproxy'] } # haproxy installation and configuration, load balancing between spring apps
+    - { role: nginx, tags: ['nginx'] } # nginx installation and configuration, proxying to haproxy from elb.
+    - { role: deploy_spring_app, tags: ['deploy_spring_app'] } # this is a collection of tasks to clone/checkout/package/run an app
+    - { role: rsyslog, tags: ['rsyslog'] } # rsyslog configuration, enable it for haproxy

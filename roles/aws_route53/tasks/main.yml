@@ -25,6 +25,7 @@
     alias: True
     alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile] | last )].springappelb_zone }}"
     alias_evaluate_target_health: True
+    overwrite: yes
   register: route_53_debug
 
 - debug: var=route_53_debug
@@ -55,7 +56,5 @@
     alias: True
     alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_zone }}"
     alias_evaluate_target_health: True
+    overwrite: yes
   when: not aws_profile_2 == ""
-
-
-
