@@ -2,11 +2,9 @@
 
 The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available.
 
-The infrastructure is designed like the image below:
+#### An overview of the infrastructure design
 
 ![alt text](aws-springapp-infrastructure.png)
-
-![](aws-springapp-infrastructure.png)
 
 ### Requirements:
  
