@@ -1,6 +1,6 @@
 ---
 
-#how many instances of the Spring app we want to run in a single sever
+#how many app instances of the Spring app we want to run in a single ec2 instace
 app_instances: 2
 
 #the default base port for our 
@@ -8,7 +8,12 @@ app_port: 8080
 
 haproxy_springapps_port: 8888
 
+#an aws_profile to be used to run our books
+
 aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}"
+aws_profile_2: "{{ lookup('env', 'AWS_SECOND_PROFILE') | default('false') }}"
+
+aws_region: "{{ lookup('env', 'AWS_DEFAULT_REGION') | default('us-east-1', true) }}"
 
 #ssh key
 aws_key_name: waheed
@@ -17,22 +22,29 @@ ansible_user: ubuntu
 
 #git repo vars
 git_key: ec2-new
-app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
+app_git_url: "git@gitlab.com:waheedi/spring-time-app.git"
 branch: master
 
 #a marker to fail accidental run for create ec2s
 create_ec2_instances: yes
 
-#How many instance per az
+#How many ec2 instances per az
 instances_count: 1
 
 #How many azs we need for production only
 az_count: 2
 
-#default instance type for our run
+#default ec2 instance type for our run
 aws_instance_type: t2.micro
 
 #auto update the Spring App version using our versioning, maybe can be better used with mvn:commit 
 update_version: yes
 
 rsyslog_server: localhost
+
+#a configured zone on route53
+route53_zone: "saascoin.network"
+
+# a dns record for our app to be hosted on it
+hello_dns: "hello.saascoin.network"
+

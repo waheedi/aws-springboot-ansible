@@ -5,10 +5,13 @@
   ignore_errors: yes
 
 - name: Start Spring App Tomcat server
-  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start --spring.profiles.active={{ aws_profile }}"
+  raw: "LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start --spring.profiles.active={{ aws_profile }}"
   notify:
     - reload nginx
     - reload haproxy
+
+- name: Pause for Spring to pick up
+  pause: seconds=60
 
 - name: Let's test the app and services are running
   uri:
@@ -16,8 +19,7 @@
     return_content: yes
   register: test_response
 
-- pause: seconds=5
-
 - name: Ensure the app is doing what we want, if not we will pause the playbook
   pause: seconds="120"
   when: 'not "home" in test_response.content'
+  ignore_errors: yes

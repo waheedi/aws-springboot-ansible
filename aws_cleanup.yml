@@ -1,0 +1,9 @@
+---
+
+# Terminate all AWS related stuff
+
+- name: Destroy AWS related stuff for Spring App
+  hosts: local
+  connection: local
+  roles:
+    - { role: aws_cleanup, tags: ['aws_cleanup'] } #clean up aws 

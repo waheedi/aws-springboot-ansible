@@ -1,9 +1,0 @@
-prod_1_us_east_1a: 'i-0cc9264de99ca5217' 
-az1: us-east-1a
-az2: us-east-1f
-instance_ids_prod: "['i-0cc9264de99ca5217', 'i-0fc65a8329903aae8']"
-prod_1_us_east_1f: 'i-0fc65a8329903aae8'
-springappsg_prod: 'sg-067f137bdfece7976'
-springappelbsg_prod: 'sg-06ee10cffb1fc82cf'
-springappelb_prod: 'spring-app-prod-1674005046.us-east-1.elb.amazonaws.com' 
-last_deploy: 1545558344

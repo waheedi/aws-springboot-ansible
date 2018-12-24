@@ -6,13 +6,6 @@
     return_content: yes
   register: response
 
-- name: Chown dirctory to user other than root
-  file: 
-    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}" 
-    owner: "{{ ansible_user }}"
-    recurse: yes
-    mode: u=rwX,g=rX,o=rX
-
 - name: Set fact for target instance zone name
   set_fact:
     zone_name: "{{ response.content }}"
@@ -61,6 +54,13 @@
     state: link 
     src: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/target/{{ app_name.stdout }}-{{ app_version }}.jar"
     follow: no
+
+- name: Chown dirctory to user other than root
+  file: 
+    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}" 
+    owner: "{{ ansible_user }}"
+    recurse: yes
+    mode: u=rwX,g=rX,o=rX
 
 - name: Chown dirctory to user other than root
   file: 

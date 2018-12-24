@@ -1,5 +1,0 @@
-test_1_eu_central_1a: 'i-0a9d6b6766ac0b3a9' 
-az1: eu-central-1a
-instance_ids_test: "['i-0a9d6b6766ac0b3a9']"
-springappsg_test: 'sg-00a0e5dd6b029f5e4'
-last_deploy: 1545493430

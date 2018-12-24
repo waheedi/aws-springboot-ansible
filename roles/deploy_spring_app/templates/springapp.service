@@ -1,12 +1,11 @@
 [Unit]
 Description=Spring App {{ aws_profile }} {{ item }}
-After=network.target
+After=syslog.target
 
 [Service]
-User=ubuntu
-Group=ubuntu
-ExecStart=
-WorkingDirectory=
+User=myapp
+ExecStart=/var/myapp/myapp.jar
+SuccessExitStatus=143
 
 [Install]
 WantedBy=multi-user.target

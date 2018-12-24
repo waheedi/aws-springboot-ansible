@@ -1,0 +1,10 @@
+---
+
+# This playbook deploys the route53 records and  health checks for the launched elbs for two profiles 
+# AWS_SECOND_PROFILE needs to be already deployed with full_deploy play
+
+- name: Add route53 records for our ELBs
+  hosts: local
+  connection: local
+  roles:
+    - { role: aws_route53, tags: ['create_route53_records'] }

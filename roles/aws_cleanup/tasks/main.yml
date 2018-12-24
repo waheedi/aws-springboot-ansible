@@ -1,0 +1,53 @@
+---
+
+- name: Delete health check for route53 for the first region
+  route53_health_check:
+    state: absent
+    fqdn: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}"
+    type: HTTP_STR_MATCH
+    resource_path: /hello
+    string_match: "hello"
+    request_interval: 10
+    failure_threshold: 2
+
+- name: Delete Route53 record
+  route53:
+    state: absent
+    zone: "{{ route53_zone }}"
+    type: A
+    record: "{{ hello_dns }}"
+    wait: yes
+    wait_timeout: 300
+    value: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}"
+
+- name: Delete Load Balancer for Spring App
+  ec2_elb_lb:
+    name:             "spring-app-{{aws_profile}}"
+    state:            absent
+    profile:          "{{ aws_profile }}"
+    region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"
+    wait: yes
+    wait_timeout: 300
+
+- name: Delete instances that were previously launched
+  ec2:
+    state: absent
+    instance_ids: "{{ hostvars[(groups[aws_profile] | last )].instance_ids }}"
+    profile:       "{{ aws_profile }}"
+    region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"
+    wait: yes
+    wait_timeout: 300
+
+- name: Delete Elastic Load Balancer Security Group
+  ec2_group:
+    group_id:  "{{ hostvars[(groups[aws_profile] | last )].springappelbsg }}"
+    profile:   "{{ aws_profile }}"
+    region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"    
+    state: absent
+
+- name: Delete Spring App Security Group
+  ec2_group:
+    group_id:  "{{ hostvars[(groups[aws_profile] | last )].springappsg }}"
+    profile:   "{{ aws_profile }}"
+    region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"    
+    state: absent

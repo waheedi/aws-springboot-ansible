@@ -104,17 +104,10 @@
     count:      "{{ instances_count }}"
     monitoring: yes
   register: springapp_az2_ec2s
-  when: '"prod" in aws_profile'
 
 - name: Set AZ2 instances fact
   set_fact:
     az2_instances: "{{ springapp_az2_ec2s.instances }}"
-  when: '"prod" in aws_profile'
-
-- name: PSEUDO Set AZ2 instances fact 
-  set_fact:
-    az2_instances: []
-  when: az2_instances is not defined
 
 - name: Tag instances at AZ1
   ec2_tag:
@@ -137,7 +130,6 @@
   with_together:
     - "{{ az2_instances }}"
     - "{{ range(1, instances_count + 1) | list }}"
-  when: '"prod" in aws_profile'
 
 - debug: var=springapp_az2_ec2s
 
@@ -160,14 +152,12 @@
         cidr_ip: 0.0.0.0/0
     state:  "present"
   register: my_lb_group
-  when: '"prod" in aws_profile or "sta" in aws_profile'
 
 #- debug: var=my_lb_group
 
 - name: Set Elastic Load Balancer Security Group ID in variable
   set_fact:
     lb_group_id: "{{ my_lb_group.group_id }}"
-  when: '"prod" in aws_profile or "sta" in aws_profile'
 
 - name: Create Load Balancer for Spring App
   ec2_elb_lb:
@@ -202,9 +192,7 @@
   register: ec2_elb  
   with_flattened:
     - "{{ springapp_az1_ec2s.instance_ids }}"
-    - "{{ springapp_az2_ec2s.instance_ids }}"
-  when: '"prod" in aws_profile or "sta" in aws_profile'
-  
+    - "{{ springapp_az2_ec2s.instance_ids }}"  
 
 #- debug: var=ec2_elb
 
@@ -237,16 +225,6 @@
 
 #- debug: var=az1_instances
 
-- name: Add meta data for the newly created EC2 instances to the var group AZ1
-  lineinfile:
-    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
-    regexp: "{{ aws_profile }}_{{ item.1 }}_{{ az1 | replace('-','_') }}"
-    line: "{{ aws_profile }}_{{ item.1 }}_{{ az1 | replace('-','_') }}: '{{ item.0.id }}' "
-  with_together:
-    - "{{ az1_instances }}"
-    - "{{ range(1, instances_count + 1) | list }}" 
-  changed_when: False
-
 - name: Add AZ1 to our profile group
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
@@ -265,35 +243,16 @@
 - name: Add instance_ids to current run profile az1 + az2
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
-    regexp: 'instance_ids_{{aws_profile}}' 
-    line: 'instance_ids_{{aws_profile}}: "{{ springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
+    regexp: 'instance_ids' 
+    line: 'instance_ids: "{{ springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
   when: (az2_instances | length > 0)
-  changed_when: False
-
-- name: Add instance_ids to current run profile az1
-  lineinfile:
-    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
-    regexp: 'instance_ids_{{aws_profile}}' 
-    line: 'instance_ids_{{aws_profile}}: "{{ springapp_az1_ec2s.instance_ids }}"'
-  when: (az2_instances | length == 0)
-  changed_when: False
-
-- name: Add meta data for the newly created EC2 instances to the var group AZ2
-  lineinfile:
-    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
-    regexp: "{{ aws_profile }}_{{ item.1 }}_{{ az2 | replace('-','_') }}"
-    line: "{{ aws_profile }}_{{ item.1 }}_{{ az2 | replace('-','_') }}: '{{ item.0.id  }}'"
-  with_together:
-    - "{{ az2_instances }}"
-    - "{{ range(1, instances_count + 1) | list }}"
-  when: '"prod" in aws_profile'
   changed_when: False
 
 - name: Add meta data for the newly created EC2 Security Group to the var group
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
-    regexp: 'springappsg_{{aws_profile}}' 
-    line: "springappsg_{{aws_profile}}: '{{ item }}'"
+    regexp: 'springappsg' 
+    line: "springappsg: '{{ item }}'"
   with_items:
     - "{{ springapp_group_id }}"
   changed_when: False
@@ -301,19 +260,31 @@
 - name: Add meta data for the newly created ELB Security Group to the var group
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
-    regexp: "springappelbsg_"
-    line: "springappelbsg_{{aws_profile}}: '{{ item }}'"
+    regexp: "springappelbsg"
+    line: "springappelbsg: '{{ item }}'"
   with_items:
     - "{{ lb_group_id }}"
-  when: '"prod" in aws_profile or "sta" in aws_profile'
   changed_when: False
 
 - name: Add meta data for the newly created ELB to the var group
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
-    regexp: "springappelb_"
-    line: "springappelb_{{aws_profile}}: '{{ ec2_elb.results[0].elb.hosted_zone_name }}' "
-  when: '"prod" in aws_profile or "sta" in aws_profile'
+    regexp: "springappelb_name"
+    line: "springappelb_name: '{{ ec2_elb.results[0].elb.hosted_zone_name }}' "
+  changed_when: False
+
+- name: Add meta data for the newly created ELB to the var group
+  lineinfile:
+    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
+    regexp: "springappelb_zone"
+    line: "springappelb_zone: '{{ ec2_elb.results[0].elb.hosted_zone_id }}' "
+  changed_when: False
+
+- name: Add the region to our vars
+  lineinfile:
+    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
+    regexp: "aws_region"
+    line: "aws_region: {{ aws_region }}"
   changed_when: False
 
 - name: Add last deploy epoch time to profile
