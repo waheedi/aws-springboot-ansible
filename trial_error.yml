@@ -12,24 +12,24 @@
     AWS_DEFAULT_PROFILE: test
   tasks:
 
-  - name: Delete health check for route53 for the first region
-    route53_health_check:
-      state: absent
-      fqdn: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}"
-      type: HTTP_STR_MATCH
-      resource_path: /hello
-      string_match: "hello"
-      request_interval: 10
-      failure_threshold: 2
-
-  - name: Delete Route53 record
-    route53:
-      state: absent
-      zone: "{{ route53_zone }}"
-      type: A
-      record: "{{ hello_dns }}"
-      value: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}" 
-
+#  - name: Delete health check for route53 for the first region
+#    route53_health_check:
+#      state: absent
+#      fqdn: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}"
+#      type: HTTP_STR_MATCH
+#      resource_path: /hello
+#      string_match: "hello"
+#      request_interval: 10
+#      failure_threshold: 2
+#
+#  - name: Delete Route53 record
+#    route53:
+#      state: absent
+#      zone: "{{ route53_zone }}"
+#      type: A
+#      record: "{{ hello_dns }}"
+#      value: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}" 
+#
  # - block:
  #   - debug: var=item
  #     with_flattened:
@@ -49,8 +49,9 @@
 #   pause: seconds="120"
 #   when: 'not "home" in test_response.content'
 
- # - name: test env
- #   debug: msg="{{ lookup('env', 'AWS_DEFAULT_PROFILE') }}"
+  - name: test env
+    debug: msg="{{ aws_profile_2 }}"
+    when: not aws_profile_2 == ""
 
  # - name: Link python3 to python in bin dir
  #   file: 

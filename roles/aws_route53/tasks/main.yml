@@ -39,7 +39,7 @@
     request_interval: 10
     failure_threshold: 2
   register: my_health_check_2
-  when: aws_profile_2 is defined
+  when: not aws_profile_2 == ""
 
 - name: Add our dns record to route53 for the second region
   route53:
@@ -55,7 +55,7 @@
     alias: True
     alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_zone }}"
     alias_evaluate_target_health: True
-  when: aws_profile_2 is defined  
+  when: not aws_profile_2 == ""
 
 
 

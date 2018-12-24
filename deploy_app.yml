@@ -11,6 +11,8 @@
   gather_facts: yes
   roles:
     - { role: haproxy, tags: ['haproxy'] } # haproxy installation and configuration, load balancing between spring apps
-    - { role: rsyslog, tags: ['rsyslog'] } # rsyslog configuration, enable it for haproxy 
     - { role: nginx, tags: ['nginx'] } # nginx installation and configuration, proxying to haproxy from elb.
     - { role: deploy_spring_app, tags: ['deploy_spring_app'] } # this is a collection of tasks to clone/checkout/package/run an app
+
+#   - { role: rsyslog, tags: ['rsyslog'] } # rsyslog configuration, enable it for haproxy 
+ 

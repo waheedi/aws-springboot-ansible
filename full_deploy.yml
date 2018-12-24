@@ -8,7 +8,8 @@
   roles:
     - { role: aws_ec2_key, tags: ['aws_set_key'], when: create_ec2_instances } # Populate or create they key to be assigned to our instances 
     - { role: aws_ec2_instances, tags: ['create_ec2_services'], when: create_ec2_instances } # At minimum, create two instances in two different 'available' Availablity-Zones
-  
+    - { role: aws_route53, tags: ['create_route53_records'] }
+ 
 - name: Pre-play install Python with raw command
   vars:
     aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}" #shamelessly hacking hosts as a variable
