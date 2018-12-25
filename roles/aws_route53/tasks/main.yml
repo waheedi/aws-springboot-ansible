@@ -8,7 +8,7 @@
     resource_path: /hello
     string_match: "hello"
     request_interval: 10
-    failure_threshold: 2
+    failure_threshold: 1
   register: my_health_check
 
 - name: Add our dns record to route53 for the first region
@@ -28,6 +28,13 @@
     overwrite: yes
   register: route_53_debug
 
+- name: Add meta data for the newly created Health Check Group
+  lineinfile:
+    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
+    regexp: "health_check_id"
+    line: "health_check_id: '{{ my_health_check.health_check.id }}' "
+  changed_when: False
+
 - debug: var=route_53_debug
 
 - name: Create a health check for route53 for the second region
@@ -40,6 +47,14 @@
     request_interval: 10
     failure_threshold: 2
   register: my_health_check_2
+  when: not aws_profile_2 == ""
+
+- name: Add meta data for the newly created Health Check Group 2
+  lineinfile:
+    dest: "{{ inventory_dir }}/group_vars/{{ aws_profile_2 }}" 
+    regexp: "health_check_id"
+    line: "health_check_id: '{{ my_health_check_2.health_check.id }}' "
+  changed_when: False
   when: not aws_profile_2 == ""
 
 - name: Add our dns record to route53 for the second region

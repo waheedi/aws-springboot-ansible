@@ -2,7 +2,7 @@
 
 The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available. 
 
-The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile which could be an enviornment, an app within an environment, a region, or a combination of the three. As boto and awscli are coupled with `aws_profile` it made it more felixable to do it in this fashion. more on requirements.
+The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile which could be an environment, an app within an environment, a region, or a combination of the three. As boto and awscli are coupled with `aws_profile` it made it more flexible to do it in this fashion. more on requirements.
 
 
 #### -
@@ -77,9 +77,9 @@ aws_secret_access_key =
 
 ---
 
-#### Deploy the infrastrcture and the spring app
-- Configure the AMI for the user running the deployment, `ec2,route53,sts,elasticloadbalancing,apigateway`
-- We need to specify a git url for the app to clone, configure the number of app instaces for each ec2 instance in the groups_vars/all file, which has all the default values for our playbooks
+#### Deploy the infrastructure and the spring app
+- Configure the IAM policies for the user running the deployment, `ec2,route53,sts,elasticloadbalancing,apigateway,autoscaling,iam` with the desired arn resources
+- We need to specify a git url for the app to clone, configure the number of app instances for each ec2 instance in the groups_vars/all file, which has all the default values for our playbooks
 - Run the full deploy: `AWS_DEFAULT_PROFILE=prod-time-app-east ansible-playbook -i hosts full_deploy.yml`, note the env variable, you can surely specify it in different ways
 - During the play you will have two copy the public keys of the new instances to the git service, it will pause for two minutes, we can automate this for github or gitlab but for now its sufficient 
 - deploy to another region by changing the `AWS_DEFAULT_PROFILE` to the desired profile/region. `AWS_DEFAULT_PROFILE=prod-time-app-west ansible-playbook -i hosts full_deploy.yml`

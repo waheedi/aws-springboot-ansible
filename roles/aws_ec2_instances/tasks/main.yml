@@ -63,7 +63,7 @@
 
 #- debug: var=springapp_group
 
-- name: Set Spring App Security Group ID in variable
+- name: Set Spring App Security Group ID in a fact
   set_fact:
     springapp_group_id: "{{ springapp_group.group_id }}"
 
@@ -87,7 +87,7 @@
   set_fact:
     az1_instances: "{{ springapp_az1_ec2s.instances }}"
 
-- debug: var=springapp_az1_ec2s
+#- debug: var=springapp_az1_ec2s
 
 - name: Create Spring App Server [AZ2]
   ec2:
@@ -150,7 +150,7 @@
         from_port: 443
         to_port: 443
         cidr_ip: 0.0.0.0/0
-    state:  "present"
+    state:  present
   register: my_lb_group
 
 #- debug: var=my_lb_group
@@ -162,11 +162,11 @@
 - name: Create Load Balancer for Spring App
   ec2_elb_lb:
     name:             "spring-app-{{aws_profile}}"
-    state:            "present"
+    state:            present
     profile:          "{{ aws_profile }}"
     region:           "{{ aws_region }}"
     security_group_ids:       "{{ lb_group_id }}"
-    cross_az_load_balancing:  "yes"
+    cross_az_load_balancing:  yes
     instance_ids:
       - "{{ item }}"
     zones:
@@ -244,15 +244,15 @@
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
     regexp: 'instance_ids' 
-    line: 'instance_ids: "{{ springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
+    line: "instance_ids: {{ springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"
   when: (az2_instances | length > 0) and (instance_ids is not defined)
   changed_when: False
 
-- name: Add instance_ids to current run profile az1 + az2 to previous run instance_ids
+- name: Add instance_ids to current run profile az1 + az2 + instance_ids from previous run
   lineinfile:
     dest: "{{ inventory_dir }}/group_vars/{{ aws_profile }}"
     regexp: 'instance_ids' 
-    line: 'instance_ids: "{{ instance_ids + springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"' 
+    line: "instance_ids: {{ instance_ids + springapp_az1_ec2s.instance_ids +  springapp_az2_ec2s.instance_ids }}"
   when: (az2_instances | length > 0) and (instance_ids is defined)
   changed_when: False
 

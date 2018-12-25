@@ -11,7 +11,7 @@
     - reload haproxy
 
 - name: Pause, let's wait a bit for the Spring app to pickup
-  pause: seconds=60
+  pause: seconds=40
 
 - name: Let's test the app and services are running
   uri:

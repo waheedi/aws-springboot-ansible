@@ -1,0 +1,751 @@
+2018-12-25 14:41:38,785 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 14:41:38,791 p=8342 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 14:41:38,805 p=8342 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 14:41:45,344 p=8342 u=Waheed |  ok: [52.15.72.28]
+2018-12-25 14:41:45,382 p=8342 u=Waheed |  TASK [test split] **************************************************************************************************************************************************************************
+2018-12-25 14:41:45,448 p=8342 u=Waheed |  ok: [52.15.72.28] => {
+    "msg": "waheedi/hello-spring-app"
+}
+2018-12-25 14:41:45,452 p=8342 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 14:41:45,453 p=8342 u=Waheed |  52.15.72.28                : ok=2    changed=0    unreachable=0    failed=0   
+2018-12-25 14:43:00,649 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 14:43:00,657 p=8372 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 14:43:00,675 p=8372 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 14:43:06,679 p=8372 u=Waheed |  fatal: [52.15.72.28]: FAILED! => {"changed": false, "cmd": "sysctl hw.model", "msg": "[Errno 2] No such file or directory", "rc": 2}
+2018-12-25 14:43:06,684 p=8372 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 14:43:06,684 p=8372 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 14:43:06,685 p=8372 u=Waheed |  52.15.72.28                : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 14:43:36,034 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 14:43:36,041 p=8406 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 14:43:36,059 p=8406 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 14:43:41,805 p=8406 u=Waheed |  fatal: [localhost]: FAILED! => {"changed": false, "cmd": "sysctl hw.model", "msg": "[Errno 2] No such file or directory", "rc": 2}
+2018-12-25 14:43:41,807 p=8406 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 14:43:41,807 p=8406 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 14:43:41,807 p=8406 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:16:04,101 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:16:04,109 p=8693 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:16:04,138 p=8693 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:16:10,252 p=8693 u=Waheed |  ok: [localhost]
+2018-12-25 15:16:10,275 p=8693 u=Waheed |  TASK [aws_ec2_key : stat] ******************************************************************************************************************************************************************
+2018-12-25 15:16:10,663 p=8693 u=Waheed |  ok: [localhost -> localhost]
+2018-12-25 15:16:10,676 p=8693 u=Waheed |  TASK [aws_ec2_key : Create SSH key pair] ***************************************************************************************************************************************************
+2018-12-25 15:16:10,711 p=8693 u=Waheed |  skipping: [localhost]
+2018-12-25 15:16:10,724 p=8693 u=Waheed |  TASK [aws_ec2_key : Assign EC2 Key] ********************************************************************************************************************************************************
+2018-12-25 15:16:11,144 p=8693 u=Waheed |   [ERROR]: User interrupted execution
+
+2018-12-25 15:16:22,642 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:16:22,649 p=8768 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:16:22,670 p=8768 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:16:28,423 p=8768 u=Waheed |  fatal: [localhost]: FAILED! => {"changed": false, "cmd": "sysctl hw.model", "msg": "[Errno 2] No such file or directory", "rc": 2}
+2018-12-25 15:16:28,426 p=8768 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:16:28,426 p=8768 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:16:28,426 p=8768 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:17:29,333 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:17:29,340 p=8802 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:17:29,368 p=8802 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:17:30,022 p=8802 u=Waheed |   [ERROR]: User interrupted execution
+
+2018-12-25 15:17:56,367 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:17:56,373 p=8831 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:17:56,398 p=8831 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:18:02,131 p=8831 u=Waheed |  fatal: [localhost]: FAILED! => {"changed": false, "cmd": "sysctl hw.model", "msg": "[Errno 2] No such file or directory", "rc": 2}
+2018-12-25 15:18:02,135 p=8831 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:18:02,135 p=8831 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:18:02,135 p=8831 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:18:26,143 p=8865 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:18:26,143 p=8865 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:18:26,372 p=8865 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:18:26,634 p=8865 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:18:26,635 p=8865 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:18:26,675 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:18:26,684 p=8865 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:18:26,713 p=8865 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:18:26,713 p=8865 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:18:32,455 p=8865 u=Waheed |  fatal: [localhost]: FAILED! => {"changed": false, "cmd": "sysctl hw.model", "msg": "[Errno 2] No such file or directory", "rc": 2}
+2018-12-25 15:18:32,458 p=8865 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:18:32,458 p=8865 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:18:32,459 p=8865 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:18:57,101 p=8897 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:18:57,101 p=8897 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:18:57,102 p=8897 u=Waheed |  setting up inventory plugins
+2018-12-25 15:18:57,116 p=8897 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:18:57,117 p=8897 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:18:57,324 p=8897 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:18:57,364 p=8897 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:18:57,588 p=8897 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:18:57,588 p=8897 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:18:57,632 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:18:57,639 p=8897 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:18:57,659 p=8897 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:18:57,660 p=8897 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:18:58,089 p=8897 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:19:03,412 p=8897 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_tpk1IP/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:19:03,413 p=8897 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:19:03,415 p=8897 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:19:03,415 p=8897 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:19:03,415 p=8897 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:20:10,026 p=8944 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:20:10,026 p=8944 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:20:10,027 p=8944 u=Waheed |  setting up inventory plugins
+2018-12-25 15:20:10,046 p=8944 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:20:10,046 p=8944 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:20:10,315 p=8944 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:20:10,341 p=8944 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:20:10,574 p=8944 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:20:10,574 p=8944 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:20:10,612 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:20:10,617 p=8944 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:20:10,635 p=8944 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:20:10,636 p=8944 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:20:11,092 p=8944 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:20:16,425 p=8944 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_PmRICq/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:20:16,425 p=8944 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:20:16,428 p=8944 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:20:16,428 p=8944 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:20:16,428 p=8944 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:21:26,096 p=8987 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:21:26,097 p=8987 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:21:26,097 p=8987 u=Waheed |  setting up inventory plugins
+2018-12-25 15:21:26,115 p=8987 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:21:26,115 p=8987 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:21:26,316 p=8987 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:21:26,347 p=8987 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:21:26,560 p=8987 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:21:26,560 p=8987 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:21:26,607 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:21:26,614 p=8987 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:21:26,635 p=8987 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:21:26,635 p=8987 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:21:27,088 p=8987 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:21:32,391 p=8987 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_GywmG0/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:21:32,392 p=8987 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:21:32,395 p=8987 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:21:32,395 p=8987 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:21:32,395 p=8987 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:22:20,718 p=9021 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:22:20,718 p=9021 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:22:20,718 p=9021 u=Waheed |  setting up inventory plugins
+2018-12-25 15:22:20,736 p=9021 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:22:20,736 p=9021 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:22:20,930 p=9021 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:22:20,965 p=9021 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:22:21,234 p=9021 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:22:21,234 p=9021 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:22:21,282 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:22:21,291 p=9021 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:22:21,319 p=9021 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:22:21,319 p=9021 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:22:21,718 p=9021 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:22:27,035 p=9021 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_B93CR8/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:22:27,036 p=9021 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:22:27,038 p=9021 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:22:27,038 p=9021 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:22:27,038 p=9021 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:22:46,930 p=9056 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:22:46,931 p=9056 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:22:46,931 p=9056 u=Waheed |  setting up inventory plugins
+2018-12-25 15:22:46,946 p=9056 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:22:46,947 p=9056 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:22:47,170 p=9056 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:22:47,202 p=9056 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:22:47,431 p=9056 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:22:47,432 p=9056 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:22:47,471 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:22:47,477 p=9056 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:22:47,496 p=9056 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:22:47,496 p=9056 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:22:47,930 p=9056 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:22:53,242 p=9056 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_rTFt4E/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:22:53,243 p=9056 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:22:53,246 p=9056 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:22:53,246 p=9056 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:22:53,246 p=9056 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:24:53,878 p=9109 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:24:53,879 p=9109 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:24:53,879 p=9109 u=Waheed |  setting up inventory plugins
+2018-12-25 15:24:53,903 p=9109 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:24:53,904 p=9109 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:24:54,174 p=9109 u=Waheed |  statically imported: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+2018-12-25 15:24:54,215 p=9109 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:24:54,563 p=9109 u=Waheed |  PLAYBOOK: full_deploy.yml ******************************************************************************************************************************************************************
+2018-12-25 15:24:54,564 p=9109 u=Waheed |  3 plays in full_deploy.yml
+2018-12-25 15:24:54,650 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:24:54,659 p=9109 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:24:54,683 p=9109 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:24:54,684 p=9109 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/full_deploy.yml:5
+2018-12-25 15:24:55,138 p=9109 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:25:00,571 p=9109 u=Waheed |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_setup_payload_w2OnIg/ansible_setup_payload.zip/ansible/module_utils/basic.py", line 2839, in run_command
+    cmd = subprocess.Popen(args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+
+2018-12-25 15:25:00,572 p=9109 u=Waheed |  fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": "sysctl hw.model",
+    "invocation": {
+        "module_args": {
+            "fact_path": "/etc/ansible/facts.d",
+            "filter": "*",
+            "gather_subset": [
+                "all"
+            ],
+            "gather_timeout": 10
+        }
+    },
+    "msg": "[Errno 2] No such file or directory",
+    "rc": 2
+}
+2018-12-25 15:25:00,575 p=9109 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:25:00,575 p=9109 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:25:00,575 p=9109 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=0    failed=1   
+2018-12-25 15:39:55,351 p=9255 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:39:55,351 p=9255 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:39:55,352 p=9255 u=Waheed |  setting up inventory plugins
+2018-12-25 15:39:55,378 p=9255 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:39:55,379 p=9255 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:39:55,627 p=9255 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:39:55,974 p=9255 u=Waheed |  PLAYBOOK: trial_error.yml ******************************************************************************************************************************************************************
+2018-12-25 15:39:55,974 p=9255 u=Waheed |  1 plays in trial_error.yml
+2018-12-25 15:39:56,066 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:39:56,074 p=9255 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:39:56,096 p=9255 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:39:56,096 p=9255 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:5
+2018-12-25 15:39:56,194 p=9255 u=Waheed |  fatal: [localhost]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_7.4p1, LibreSSL 2.5.0\r\ndebug1: Reading configuration data /Users/Waheed/.ssh/config\r\ndebug1: /Users/Waheed/.ssh/config line 18: Applying options for *\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 53: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/Users/Waheed/.ansible/cp/a64ccf8ffb\" does not exist\r\ndebug2: resolving \"localhost\" port 22\r\ndebug2: ssh_connect_direct: needpriv 0\r\ndebug1: Connecting to localhost [::1] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address ::1 port 22: Connection refused\r\ndebug1: Connecting to localhost [fe80::1%lo0] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address fe80::1%lo0 port 22: Connection refused\r\ndebug1: Connecting to localhost [127.0.0.1] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address 127.0.0.1 port 22: Connection refused\r\nssh: connect to host localhost port 22: Connection refused\r\n",
+    "unreachable": true
+}
+2018-12-25 15:39:56,197 p=9255 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/trial_error.retry
+
+2018-12-25 15:39:56,197 p=9255 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:39:56,197 p=9255 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=1    failed=0   
+2018-12-25 15:40:07,848 p=9265 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:40:07,848 p=9265 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:40:07,848 p=9265 u=Waheed |  setting up inventory plugins
+2018-12-25 15:40:07,862 p=9265 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:40:07,862 p=9265 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:40:07,994 p=9265 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:40:08,221 p=9265 u=Waheed |  PLAYBOOK: trial_error.yml ******************************************************************************************************************************************************************
+2018-12-25 15:40:08,221 p=9265 u=Waheed |  1 plays in trial_error.yml
+2018-12-25 15:40:08,263 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:40:08,270 p=9265 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:40:08,283 p=9265 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:40:08,284 p=9265 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:5
+2018-12-25 15:40:08,371 p=9265 u=Waheed |  fatal: [localhost]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_7.4p1, LibreSSL 2.5.0\r\ndebug1: Reading configuration data /Users/Waheed/.ssh/config\r\ndebug1: /Users/Waheed/.ssh/config line 18: Applying options for *\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 53: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/Users/Waheed/.ansible/cp/a64ccf8ffb\" does not exist\r\ndebug2: resolving \"localhost\" port 22\r\ndebug2: ssh_connect_direct: needpriv 0\r\ndebug1: Connecting to localhost [::1] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address ::1 port 22: Connection refused\r\ndebug1: Connecting to localhost [fe80::1%lo0] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address fe80::1%lo0 port 22: Connection refused\r\ndebug1: Connecting to localhost [127.0.0.1] port 22.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: connect to address 127.0.0.1 port 22: Connection refused\r\nssh: connect to host localhost port 22: Connection refused\r\n",
+    "unreachable": true
+}
+2018-12-25 15:40:08,376 p=9265 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/trial_error.retry
+
+2018-12-25 15:40:08,376 p=9265 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:40:08,377 p=9265 u=Waheed |  localhost                  : ok=0    changed=0    unreachable=1    failed=0   
+2018-12-25 15:41:07,483 p=9281 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:41:07,484 p=9281 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:41:07,484 p=9281 u=Waheed |  setting up inventory plugins
+2018-12-25 15:41:07,505 p=9281 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:41:07,505 p=9281 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:41:07,663 p=9281 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:41:07,912 p=9281 u=Waheed |  PLAYBOOK: trial_error.yml ******************************************************************************************************************************************************************
+2018-12-25 15:41:07,912 p=9281 u=Waheed |  1 plays in trial_error.yml
+2018-12-25 15:41:07,964 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:41:07,973 p=9281 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:41:07,994 p=9281 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:41:07,994 p=9281 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:5
+2018-12-25 15:41:08,477 p=9281 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:41:14,097 p=9281 u=Waheed |  ok: [localhost]
+2018-12-25 15:41:14,098 p=9281 u=Waheed |  META: ran handlers
+2018-12-25 15:41:14,112 p=9281 u=Waheed |  TASK [test split] **************************************************************************************************************************************************************************
+2018-12-25 15:41:14,112 p=9281 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:16
+2018-12-25 15:41:14,161 p=9281 u=Waheed |  ok: [localhost] => {
+    "msg": "waheedi/hello-spring-app"
+}
+2018-12-25 15:41:14,163 p=9281 u=Waheed |  META: ran handlers
+2018-12-25 15:41:14,163 p=9281 u=Waheed |  META: ran handlers
+2018-12-25 15:41:14,165 p=9281 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:41:14,165 p=9281 u=Waheed |  localhost                  : ok=2    changed=0    unreachable=0    failed=0   
+2018-12-25 15:41:14,867 p=9318 u=Waheed |  ansible-playbook 2.7.0
+  config file = /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg
+  configured module search path = ['/Users/Waheed/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.1 (default, Nov 28 2018, 11:55:14) [Clang 9.0.0 (clang-900.0.39.2)]
+2018-12-25 15:41:14,868 p=9318 u=Waheed |  Using /Users/Waheed/projects/aws-spring-playbooks/ansible.cfg as config file
+2018-12-25 15:41:14,868 p=9318 u=Waheed |  setting up inventory plugins
+2018-12-25 15:41:14,889 p=9318 u=Waheed |  Set default localhost to localhost
+2018-12-25 15:41:14,889 p=9318 u=Waheed |  Parsed /Users/Waheed/projects/aws-spring-playbooks/hosts inventory source with ini plugin
+2018-12-25 15:41:15,026 p=9318 u=Waheed |  Loading callback plugin default of type stdout, v2.0 from /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/plugins/callback/default.py
+2018-12-25 15:41:15,233 p=9318 u=Waheed |  PLAYBOOK: trial_error.yml ******************************************************************************************************************************************************************
+2018-12-25 15:41:15,234 p=9318 u=Waheed |  1 plays in trial_error.yml
+2018-12-25 15:41:15,266 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:41:15,273 p=9318 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:41:15,287 p=9318 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:41:15,287 p=9318 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:5
+2018-12-25 15:41:15,692 p=9318 u=Waheed |  Using module file /usr/local/Cellar/ansible/2.7.0/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+2018-12-25 15:41:21,127 p=9318 u=Waheed |  ok: [localhost]
+2018-12-25 15:41:21,128 p=9318 u=Waheed |  META: ran handlers
+2018-12-25 15:41:21,141 p=9318 u=Waheed |  TASK [test split] **************************************************************************************************************************************************************************
+2018-12-25 15:41:21,142 p=9318 u=Waheed |  task path: /Users/Waheed/projects/aws-spring-playbooks/trial_error.yml:16
+2018-12-25 15:41:21,186 p=9318 u=Waheed |  ok: [localhost] => {
+    "msg": "waheedi/hello-spring-app"
+}
+2018-12-25 15:41:21,187 p=9318 u=Waheed |  META: ran handlers
+2018-12-25 15:41:21,187 p=9318 u=Waheed |  META: ran handlers
+2018-12-25 15:41:21,189 p=9318 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:41:21,189 p=9318 u=Waheed |  localhost                  : ok=2    changed=0    unreachable=0    failed=0   
+2018-12-25 15:46:49,870 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:46:49,878 p=9405 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:46:49,893 p=9405 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:46:55,877 p=9405 u=Waheed |  ok: [localhost]
+2018-12-25 15:46:55,891 p=9405 u=Waheed |  TASK [test split] **************************************************************************************************************************************************************************
+2018-12-25 15:46:55,941 p=9405 u=Waheed |  ok: [localhost] => {
+    "msg": "waheedi/hello-spring-app"
+}
+2018-12-25 15:46:55,946 p=9405 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:46:55,946 p=9405 u=Waheed |  localhost                  : ok=2    changed=0    unreachable=0    failed=0   
+2018-12-25 15:46:57,145 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:46:57,153 p=9442 u=Waheed |  PLAY [local] *******************************************************************************************************************************************************************************
+2018-12-25 15:46:57,166 p=9442 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:47:02,984 p=9442 u=Waheed |  ok: [localhost]
+2018-12-25 15:47:02,998 p=9442 u=Waheed |  TASK [test split] **************************************************************************************************************************************************************************
+2018-12-25 15:47:03,056 p=9442 u=Waheed |  ok: [localhost] => {
+    "msg": "waheedi/hello-spring-app"
+}
+2018-12-25 15:47:03,062 p=9442 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:47:03,062 p=9442 u=Waheed |  localhost                  : ok=2    changed=0    unreachable=0    failed=0   
+2018-12-25 15:47:04,228 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:47:04,234 p=9478 u=Waheed |  PLAY [Add route53 records for our ELBs] ****************************************************************************************************************************************************
+2018-12-25 15:47:04,246 p=9478 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:47:10,067 p=9478 u=Waheed |  ok: [localhost]
+2018-12-25 15:47:10,081 p=9478 u=Waheed |  TASK [aws_route53 : Create a health check for route53 for the first region] ****************************************************************************************************************
+2018-12-25 15:47:10,129 p=9478 u=Waheed |  fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'prod-west'\n\nThe error appears to have been in '/Users/Waheed/projects/aws-spring-playbooks/roles/aws_route53/tasks/main.yml': line 3, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: Create a health check for route53 for the first region\n  ^ here\n"}
+2018-12-25 15:47:10,131 p=9478 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/deploy_to_route53.retry
+
+2018-12-25 15:47:10,131 p=9478 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:47:10,132 p=9478 u=Waheed |  localhost                  : ok=1    changed=0    unreachable=0    failed=1   
+2018-12-25 15:47:55,394 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 15:47:55,404 p=9522 u=Waheed |  PLAY [Launch needed EC2 instances and services] ********************************************************************************************************************************************
+2018-12-25 15:47:55,439 p=9522 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:48:01,334 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:01,357 p=9522 u=Waheed |  TASK [aws_ec2_key : stat] ******************************************************************************************************************************************************************
+2018-12-25 15:48:01,737 p=9522 u=Waheed |  ok: [localhost -> localhost]
+2018-12-25 15:48:01,750 p=9522 u=Waheed |  TASK [aws_ec2_key : Create SSH key pair] ***************************************************************************************************************************************************
+2018-12-25 15:48:01,779 p=9522 u=Waheed |  skipping: [localhost]
+2018-12-25 15:48:01,792 p=9522 u=Waheed |  TASK [aws_ec2_key : Assign EC2 Key] ********************************************************************************************************************************************************
+2018-12-25 15:48:07,285 p=9522 u=Waheed |  ok: [localhost] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDjhiKpldhpBu1xorzsGDjYIUbaNkS1LJ6a1LXY+NRD2Cf/1Zi+ohIh/VAeLpnXBEKZ7gcWijZ4mRLqS12CGYh7xnHL+BvmWWE8cauoZo9Ew59XkVJQZcMXoy1kL7rsl/Ib6CfyzntzjCD6ts9CpFhp1sWzo+i4rsegDRUcdslwUyVDCTWLkzROfshi/3k5TObJPVox7Wd5iPJQ6jTwP6XrTMBlTShnz1MIrJ5MQMxTv7vgEma0E/xssuaqcozIkIVjxH+p0Ck9j+0KVa0N00K8olf6eyBRNHj0/0PGc5vgipxy+phBjrl+6AyPUWGMp9V4xQ6NN8cNyYckoM+HgpgnpgP6tVRxBEROL1OyNy6I6LCNep7nw7TXyohl759Y92t99Re1alQ1Ep5gFCSKMhISvOhMjsD3vdxU3M2sPIdAleBWtYnUfEaafFUShI1jZ1kX4vLbdkXmT74wt3KuefCyRNDYc9K50LN+GxjM84VD1Xlbp5dg6z6p3SK7H/jy2k0+fEObn76F2L9Cej3G7QV3zjEg3ZDNGPyH+YQVlDsX0qVzxO0U/5yMqnXGjiiZyEQSp7b+8sCUjLb5MNdJtb/ZnZ2WX8bI86Psg+TjfB/+DJhY45xl64TJCeDT++r9/t+vod86e1OKYXP8X9d8crFFe5b7J4u4b7+6n2wUWBExXQ==)
+2018-12-25 15:48:07,301 p=9522 u=Waheed |  TASK [aws_ec2_instances : Get AMI for Ubuntu in our region] ********************************************************************************************************************************
+2018-12-25 15:48:11,341 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:11,355 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set AMI ID in a fact] ********************************************************************************************************************************************
+2018-12-25 15:48:11,404 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:11,423 p=9522 u=Waheed |  TASK [aws_ec2_instances : Get azs that are available in our region] ************************************************************************************************************************
+2018-12-25 15:48:13,797 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:13,809 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set aws_region fact] *********************************************************************************************************************************************
+2018-12-25 15:48:13,850 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:13,864 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set AZ1 fact] ****************************************************************************************************************************************************
+2018-12-25 15:48:13,906 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:13,922 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set AZ2 fact] ****************************************************************************************************************************************************
+2018-12-25 15:48:13,969 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:13,983 p=9522 u=Waheed |  TASK [aws_ec2_instances : debug] ***********************************************************************************************************************************************************
+2018-12-25 15:48:14,032 p=9522 u=Waheed |  ok: [localhost] => {
+    "msg": "AWS profile in Play is prod-west , ami_id is ami-065ebd3e6b63c75d5 , az-1: us-west-1a az-2: us-west-1b and region: us-west-1"
+}
+2018-12-25 15:48:14,045 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create Spring App Security Group] ********************************************************************************************************************************
+2018-12-25 15:48:25,465 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:48:25,486 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set Spring App Security Group ID in a fact] **********************************************************************************************************************
+2018-12-25 15:48:25,541 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:25,560 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create Spring App Server [AZ1]] **********************************************************************************************************************************
+2018-12-25 15:48:51,828 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:48:51,846 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set AZ1 instances fact] ******************************************************************************************************************************************
+2018-12-25 15:48:51,896 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:48:51,911 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create Spring App Server [AZ2]] **********************************************************************************************************************************
+2018-12-25 15:49:17,932 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:49:17,945 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set AZ2 instances fact] ******************************************************************************************************************************************
+2018-12-25 15:49:17,996 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:18,008 p=9522 u=Waheed |  TASK [aws_ec2_instances : Tag instances at AZ1] ********************************************************************************************************************************************
+2018-12-25 15:49:21,727 p=9522 u=Waheed |  changed: [localhost] => (item=[{'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-5-252.us-west-1.compute.internal', 'public_ip': '54.215.235.138', 'private_ip': '172.31.5.252', 'id': 'i-01a4dcc90015b5647', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-00f3cb0be00d118c0'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az1': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1a', 'ami_launch_index': '0', 'dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:28.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'}, 1])
+2018-12-25 15:49:21,741 p=9522 u=Waheed |  TASK [aws_ec2_instances : Tag instances at AZ2] ********************************************************************************************************************************************
+2018-12-25 15:49:24,440 p=9522 u=Waheed |  changed: [localhost] => (item=[{'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-29-236.us-west-1.compute.internal', 'public_ip': '13.57.177.70', 'private_ip': '172.31.29.236', 'id': 'i-0789da72e7a424853', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-07270f3a86fc31b77'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az2': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1b', 'ami_launch_index': '0', 'dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:54.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'}, 1])
+2018-12-25 15:49:24,453 p=9522 u=Waheed |  TASK [aws_ec2_instances : debug] ***********************************************************************************************************************************************************
+2018-12-25 15:49:24,502 p=9522 u=Waheed |  ok: [localhost] => {
+    "springapp_az2_ec2s": {
+        "changed": true,
+        "failed": false,
+        "instance_ids": [
+            "i-0789da72e7a424853"
+        ],
+        "instances": [
+            {
+                "ami_launch_index": "0",
+                "architecture": "x86_64",
+                "block_device_mapping": {
+                    "/dev/sda1": {
+                        "delete_on_termination": true,
+                        "status": "attached",
+                        "volume_id": "vol-07270f3a86fc31b77"
+                    }
+                },
+                "dns_name": "ec2-13-57-177-70.us-west-1.compute.amazonaws.com",
+                "ebs_optimized": false,
+                "groups": {
+                    "sg-065ead6b57809b71f": "Spring App-prod-west"
+                },
+                "hypervisor": "xen",
+                "id": "i-0789da72e7a424853",
+                "image_id": "ami-065ebd3e6b63c75d5",
+                "instance_type": "t2.micro",
+                "kernel": null,
+                "key_name": "waheed",
+                "launch_time": "2018-12-25T14:48:54.000Z",
+                "placement": "us-west-1b",
+                "private_dns_name": "ip-172-31-29-236.us-west-1.compute.internal",
+                "private_ip": "172.31.29.236",
+                "public_dns_name": "ec2-13-57-177-70.us-west-1.compute.amazonaws.com",
+                "public_ip": "13.57.177.70",
+                "ramdisk": null,
+                "region": "us-west-1",
+                "root_device_name": "/dev/sda1",
+                "root_device_type": "ebs",
+                "state": "running",
+                "state_code": 16,
+                "tags": {
+                    "az2": "yes"
+                },
+                "tenancy": "default",
+                "virtualization_type": "hvm"
+            }
+        ],
+        "tagged_instances": []
+    }
+}
+2018-12-25 15:49:24,516 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create Elastic Load Balancer Security Group] *********************************************************************************************************************
+2018-12-25 15:49:34,223 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:49:34,236 p=9522 u=Waheed |  TASK [aws_ec2_instances : Set Elastic Load Balancer Security Group ID in variable] *********************************************************************************************************
+2018-12-25 15:49:34,289 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:34,305 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create Load Balancer for Spring App] *****************************************************************************************************************************
+2018-12-25 15:49:40,991 p=9522 u=Waheed |  changed: [localhost] => (item=i-01a4dcc90015b5647)
+2018-12-25 15:49:44,981 p=9522 u=Waheed |  changed: [localhost] => (item=i-0789da72e7a424853)
+2018-12-25 15:49:44,999 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add to hosts variabls] *******************************************************************************************************************************************
+2018-12-25 15:49:45,087 p=9522 u=Waheed |  changed: [localhost] => (item={'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-5-252.us-west-1.compute.internal', 'public_ip': '54.215.235.138', 'private_ip': '172.31.5.252', 'id': 'i-01a4dcc90015b5647', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-00f3cb0be00d118c0'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az1': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1a', 'ami_launch_index': '0', 'dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:28.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'})
+2018-12-25 15:49:45,098 p=9522 u=Waheed |  changed: [localhost] => (item={'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-29-236.us-west-1.compute.internal', 'public_ip': '13.57.177.70', 'private_ip': '172.31.29.236', 'id': 'i-0789da72e7a424853', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-07270f3a86fc31b77'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az2': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1b', 'ami_launch_index': '0', 'dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:54.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'})
+2018-12-25 15:49:45,116 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add profile inventory to hosts] **********************************************************************************************************************************
+2018-12-25 15:49:45,551 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:49:45,562 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add the newly created EC2 instances to the local host group] *****************************************************************************************************
+2018-12-25 15:49:45,840 p=9522 u=Waheed |  changed: [localhost] => (item={'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-5-252.us-west-1.compute.internal', 'public_ip': '54.215.235.138', 'private_ip': '172.31.5.252', 'id': 'i-01a4dcc90015b5647', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-00f3cb0be00d118c0'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az1': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1a', 'ami_launch_index': '0', 'dns_name': 'ec2-54-215-235-138.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:28.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'})
+2018-12-25 15:49:46,063 p=9522 u=Waheed |  changed: [localhost] => (item={'kernel': None, 'ebs_optimized': False, 'root_device_type': 'ebs', 'private_dns_name': 'ip-172-31-29-236.us-west-1.compute.internal', 'public_ip': '13.57.177.70', 'private_ip': '172.31.29.236', 'id': 'i-0789da72e7a424853', 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'delete_on_termination': True, 'volume_id': 'vol-07270f3a86fc31b77'}}, 'state': 'running', 'virtualization_type': 'hvm', 'root_device_name': '/dev/sda1', 'ramdisk': None, 'tags': {'az2': 'yes'}, 'key_name': 'waheed', 'image_id': 'ami-065ebd3e6b63c75d5', 'tenancy': 'default', 'groups': {'sg-065ead6b57809b71f': 'Spring App-prod-west'}, 'public_dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'state_code': 16, 'placement': 'us-west-1b', 'ami_launch_index': '0', 'dns_name': 'ec2-13-57-177-70.us-west-1.compute.amazonaws.com', 'region': 'us-west-1', 'launch_time': '2018-12-25T14:48:54.000Z', 'instance_type': 't2.micro', 'architecture': 'x86_64', 'hypervisor': 'xen'})
+2018-12-25 15:49:46,077 p=9522 u=Waheed |  TASK [aws_ec2_instances : Create our group_vars file for our hosts] ************************************************************************************************************************
+2018-12-25 15:49:46,574 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:49:46,591 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add AZ1 to our profile group] ************************************************************************************************************************************
+2018-12-25 15:49:46,848 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:46,863 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add AZ2 to our profile group] ************************************************************************************************************************************
+2018-12-25 15:49:47,103 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:47,115 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add instance_ids to current run profile az1 + az2] ***************************************************************************************************************
+2018-12-25 15:49:47,370 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:47,380 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add instance_ids to current run profile az1 + az2 + instance_ids from previous run] ******************************************************************************
+2018-12-25 15:49:47,412 p=9522 u=Waheed |  skipping: [localhost]
+2018-12-25 15:49:47,431 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add meta data for the newly created EC2 Security Group to the var group] *****************************************************************************************
+2018-12-25 15:49:47,703 p=9522 u=Waheed |  ok: [localhost] => (item=sg-065ead6b57809b71f)
+2018-12-25 15:49:47,714 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add meta data for the newly created ELB Security Group to the var group] *****************************************************************************************
+2018-12-25 15:49:47,959 p=9522 u=Waheed |  ok: [localhost] => (item=sg-0b6d9909c4d14a000)
+2018-12-25 15:49:47,997 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add meta data for the newly created ELB to the var group] ********************************************************************************************************
+2018-12-25 15:49:48,270 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:48,281 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add meta data for the newly created ELB to the var group] ********************************************************************************************************
+2018-12-25 15:49:48,538 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:48,548 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add the region to our vars] **************************************************************************************************************************************
+2018-12-25 15:49:48,795 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:48,809 p=9522 u=Waheed |  TASK [aws_ec2_instances : Add last deploy epoch time to profile] ***************************************************************************************************************************
+2018-12-25 15:49:49,040 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:49:49,064 p=9522 u=Waheed |  TASK [aws_ec2_instances : Pause, let's wait a bit for the machines to start] ***************************************************************************************************************
+2018-12-25 15:49:49,107 p=9522 u=Waheed |  Pausing for 20 seconds
+2018-12-25 15:49:49,107 p=9522 u=Waheed |  (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2018-12-25 15:50:09,114 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:50:09,127 p=9522 u=Waheed |  TASK [aws_route53 : Create a health check for route53 for the first region] ****************************************************************************************************************
+2018-12-25 15:50:10,837 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:50:10,848 p=9522 u=Waheed |  TASK [aws_route53 : Add our dns record to route53 for the first region] ********************************************************************************************************************
+2018-12-25 15:50:12,694 p=9522 u=Waheed |  changed: [localhost]
+2018-12-25 15:50:12,705 p=9522 u=Waheed |  TASK [aws_route53 : Add meta data for the newly created Health Check Group] ****************************************************************************************************************
+2018-12-25 15:50:12,947 p=9522 u=Waheed |  ok: [localhost]
+2018-12-25 15:50:12,959 p=9522 u=Waheed |  TASK [aws_route53 : debug] *****************************************************************************************************************************************************************
+2018-12-25 15:50:13,003 p=9522 u=Waheed |  ok: [localhost] => {
+    "route_53_debug": {
+        "changed": true,
+        "failed": false
+    }
+}
+2018-12-25 15:50:13,014 p=9522 u=Waheed |  TASK [aws_route53 : Create a health check for route53 for the second region] ***************************************************************************************************************
+2018-12-25 15:50:13,056 p=9522 u=Waheed |  skipping: [localhost]
+2018-12-25 15:50:13,073 p=9522 u=Waheed |  TASK [aws_route53 : Add meta data for the newly created Health Check Group 2] **************************************************************************************************************
+2018-12-25 15:50:13,108 p=9522 u=Waheed |  skipping: [localhost]
+2018-12-25 15:50:13,126 p=9522 u=Waheed |  TASK [aws_route53 : Add our dns record to route53 for the second region] *******************************************************************************************************************
+2018-12-25 15:50:13,172 p=9522 u=Waheed |  skipping: [localhost]
+2018-12-25 15:50:13,194 p=9522 u=Waheed |  PLAY [Pre-play install Python with raw command] ********************************************************************************************************************************************
+2018-12-25 15:50:13,209 p=9522 u=Waheed |  TASK [minimal_python : Install python for Ansible use (Facts gathering)] *******************************************************************************************************************
+2018-12-25 15:50:17,132 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:50:17,159 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:50:17,170 p=9522 u=Waheed |  TASK [minimal_python : Link python3 to python in bin dir] **********************************************************************************************************************************
+2018-12-25 15:50:17,807 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:50:17,809 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:50:17,821 p=9522 u=Waheed |  PLAY [Deploy the Spring App] ***************************************************************************************************************************************************************
+2018-12-25 15:50:17,836 p=9522 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 15:50:25,054 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:50:25,289 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:50:25,305 p=9522 u=Waheed |  TASK [common : Setup needed packages] ******************************************************************************************************************************************************
+2018-12-25 15:51:47,886 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:51:48,404 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:51:48,422 p=9522 u=Waheed |  TASK [common : Start NTP] ******************************************************************************************************************************************************************
+2018-12-25 15:51:53,841 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:51:53,844 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:51:53,862 p=9522 u=Waheed |  TASK [common : Enable Screen Scrolling] ****************************************************************************************************************************************************
+2018-12-25 15:51:58,994 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:51:59,025 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:51:59,051 p=9522 u=Waheed |  TASK [common : Enable timed BASH log] ******************************************************************************************************************************************************
+2018-12-25 15:52:04,130 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:52:04,561 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:52:04,586 p=9522 u=Waheed |  TASK [common : Set locale] *****************************************************************************************************************************************************************
+2018-12-25 15:52:10,889 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:52:11,115 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:52:11,138 p=9522 u=Waheed |  TASK [common : Disable SSH PasswordAuthentication] *****************************************************************************************************************************************
+2018-12-25 15:52:16,181 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:52:16,715 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:52:16,731 p=9522 u=Waheed |  TASK [common : Make sure SSH PasswordAuthentication is disabled] ***************************************************************************************************************************
+2018-12-25 15:52:21,764 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:52:21,946 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:52:21,964 p=9522 u=Waheed |  TASK [common : Disabled DNS lookup] ********************************************************************************************************************************************************
+2018-12-25 15:52:26,953 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:52:27,158 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:52:27,178 p=9522 u=Waheed |  TASK [common : Git access for our host] ****************************************************************************************************************************************************
+2018-12-25 15:52:32,121 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:52:32,649 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:52:32,670 p=9522 u=Waheed |  TASK [common : Create SSH key pair] ********************************************************************************************************************************************************
+2018-12-25 15:52:38,397 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:52:39,771 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:52:39,792 p=9522 u=Waheed |  TASK [common : Read content of public key for Git repo keys] *******************************************************************************************************************************
+2018-12-25 15:52:44,905 p=9522 u=Waheed |  ok: [13.57.177.70]
+2018-12-25 15:52:45,113 p=9522 u=Waheed |  ok: [54.215.235.138]
+2018-12-25 15:52:45,140 p=9522 u=Waheed |  TASK [common : Public Key to be added to Git repo] *****************************************************************************************************************************************
+2018-12-25 15:52:45,265 p=9522 u=Waheed |  ok: [54.215.235.138] => {
+    "msg": "git_pub_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZEBtgBgmp9WNy4hTJ5QZofEqyNoSxHx1IRBpbaUh5uzeyc6s4o6BWP6dM6q99UIa1QrsDYCf3S0vllEw6DX8nQHq0aFhEjx21MvpG3ozRHkZxIlmuMpL9nrgl9lFzAAN9+jST/sLfeclUowKcKMK8ww4BbcLM2d9qPKTsuOcc7ztS8GJVqRQVz5LDCc6Umg/haQMLGzrgalJju9HSz3L+zgITnNhvYjqloCLNVI2QwoR/WV2LxGG5Ya8E+puxrFWi0gxGjj6JNZ4ygMLpoxHbO1bh8V4gGFDKzDe35fMlLkevLiNNUMPxsd6ZM5ho05Y9WzuPoF+rq6f7EgdyYVint/tpcnyOAPMlQW9kjV6l4oXvJaxxFWl/q0UBbaIuIXPPhF0Z8wfl6R0CgCR3s9ccy9QCyty42cN/bRbXAWeqa/rcK5nLE70xDiRUS0TkSXzjDQ172XQz2/v9+GLH0+fFzOLfEuLrIasHpzi4xGDuVuoUfu6SYRgjFZxYYhuQdtxV7rPwvoMOFsxHLEeCzqdRjmZ1GR6DcepA+xhqCzVnNULbgyvjBf6STR0xxfpRJteIH5lZX8k1d3Lm1nNDfAWGp8Fe2NmRH16XycMQbCCPyMO+rU69d3mQws/36KBIb3TOS5NIwGWM6x11WdwgwtDjP1ogE9HhxH+gjCU86lXj9w== \n"
+}
+2018-12-25 15:52:45,295 p=9522 u=Waheed |  ok: [13.57.177.70] => {
+    "msg": "git_pub_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDd7EAXULMoP1xx7dLahgRjeuwGoSaG+mNX/W8NLAYQ5vgj03TZCpuuB3NGwT1U9ggdTTb/5TI03G9edLiHjgwwQYZLX4CwfSNK98NWQCULYPViJM5eR10totYddrXx0lntgfFjwme/ilJvW+iO/nybd2l/FDGtQO+PssuHlOUYBpN+Bc9WBxeutAiCNVnXrhCElEYDyNiObWWlz7h4aZ6UjfmZFDkukVHaQHcOSfwp509zftfabj/WriAKc3x6tpxv1i25XAMRFrwPRyRxRN4NgR1qHj8wjca7lPhVPAEeYPRK14Lt1BgnNtVdNSp16ShA3u4aVmVPYqK8FihprKvgAUu3XwShmo5IkGItVpsASGCY/JukO6Qp8qCczhJOjdRM/Y7OR04aFZHQiEML/wTSRP5b5ZSrBbvU/2bm64GhFOO45+Ud6dw/X2ZlO5EOnvUoPUop8L+098F4N8qFIRvlW1RydrpokEWIPJqS4VHeQM6JM+BBAzxJcLw5yn3oAhyqSpl7L46BhRZIDxX305PtedVyoV9nqyOp21sjtLuPP/fhQvNP1tZYk5rLeiLMbJ4GTIa0qOe71bvFxzOHkq+0FBi8UUhRAgd05pdAJBL/vR43FFjcjmJ7G0O5qQL28n8JO9xKMnFTtDR8fPqQHQI3b18CU+KRlWo151EAyqOERw== \n"
+}
+2018-12-25 15:52:45,322 p=9522 u=Waheed |  TASK [common : Configuration file for ssh] *************************************************************************************************************************************************
+2018-12-25 15:52:57,287 p=9522 u=Waheed |  changed: [13.57.177.70]
+2018-12-25 15:52:57,309 p=9522 u=Waheed |  changed: [54.215.235.138]
+2018-12-25 15:52:57,334 p=9522 u=Waheed |  TASK [common : Add gitkey to Gitlab repo deploy_keys] **************************************************************************************************************************************
+2018-12-25 15:53:02,873 p=9522 u=Waheed |  fatal: [13.57.177.70]: FAILED! => {"changed": false, "msg": "unknown url type: 'None/v4/projects/waheedi%2Fhello-spring-app/deploy_keys'"}
+2018-12-25 15:53:02,885 p=9522 u=Waheed |  fatal: [54.215.235.138]: FAILED! => {"changed": false, "msg": "unknown url type: 'None/v4/projects/waheedi%2Fhello-spring-app/deploy_keys'"}
+2018-12-25 15:53:02,895 p=9522 u=Waheed |  RUNNING HANDLER [common : sshd restart] ****************************************************************************************************************************************************
+2018-12-25 15:53:02,898 p=9522 u=Waheed |  	to retry, use: --limit @/Users/Waheed/projects/aws-spring-playbooks/full_deploy.retry
+
+2018-12-25 15:53:02,898 p=9522 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 15:53:02,898 p=9522 u=Waheed |  13.57.177.70               : ok=16   changed=7    unreachable=0    failed=1   
+2018-12-25 15:53:02,898 p=9522 u=Waheed |  54.215.235.138             : ok=16   changed=7    unreachable=0    failed=1   
+2018-12-25 15:53:02,899 p=9522 u=Waheed |  localhost                  : ok=40   changed=13   unreachable=0    failed=0   
+2018-12-25 16:04:01,479 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2018-12-25 16:04:01,488 p=10472 u=Waheed |  PLAY [Destroy AWS related stuff for Spring App] ********************************************************************************************************************************************
+2018-12-25 16:04:01,504 p=10472 u=Waheed |  TASK [Gathering Facts] *********************************************************************************************************************************************************************
+2018-12-25 16:04:07,447 p=10472 u=Waheed |  ok: [localhost]
+2018-12-25 16:04:07,459 p=10472 u=Waheed |  TASK [aws_cleanup : Delete alert SNS topic for our aws services] ***************************************************************************************************************************
+2018-12-25 16:04:10,184 p=10472 u=Waheed |  ok: [localhost]
+2018-12-25 16:04:10,195 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Auto Scaling group for our profile] *****************************************************************************************************************************
+2018-12-25 16:04:12,913 p=10472 u=Waheed |  ok: [localhost]
+2018-12-25 16:04:12,923 p=10472 u=Waheed |  TASK [aws_cleanup : Delete launch config] **************************************************************************************************************************************************
+2018-12-25 16:04:15,165 p=10472 u=Waheed |  ok: [localhost]
+2018-12-25 16:04:15,175 p=10472 u=Waheed |  TASK [aws_cleanup : Delete health check for route53 for the first region] ******************************************************************************************************************
+2018-12-25 16:04:17,196 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:04:17,207 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Route53 record for the first profile] ***************************************************************************************************************************
+2018-12-25 16:04:50,757 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:04:50,771 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Route53 record for the second profile] **************************************************************************************************************************
+2018-12-25 16:04:50,811 p=10472 u=Waheed |  skipping: [localhost]
+2018-12-25 16:04:50,824 p=10472 u=Waheed |  TASK [aws_cleanup : Delete health check for route53 for the second profile] ****************************************************************************************************************
+2018-12-25 16:04:50,863 p=10472 u=Waheed |  skipping: [localhost]
+2018-12-25 16:04:50,875 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Load Balancer for Spring App] ***********************************************************************************************************************************
+2018-12-25 16:05:50,792 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:05:50,806 p=10472 u=Waheed |  TASK [aws_cleanup : Delete instances that were previously launched] ************************************************************************************************************************
+2018-12-25 16:06:54,853 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:06:54,867 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Elastic Load Balancer Security Group] ***************************************************************************************************************************
+2018-12-25 16:06:59,030 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:06:59,049 p=10472 u=Waheed |  TASK [aws_cleanup : Delete Spring App Security Group] **************************************************************************************************************************************
+2018-12-25 16:07:02,799 p=10472 u=Waheed |  changed: [localhost]
+2018-12-25 16:07:02,802 p=10472 u=Waheed |  PLAY RECAP *********************************************************************************************************************************************************************************
+2018-12-25 16:07:02,803 p=10472 u=Waheed |  localhost                  : ok=10   changed=6    unreachable=0    failed=0   

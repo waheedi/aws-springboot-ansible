@@ -1,5 +1,20 @@
 ---
 
+- name: Delete alert SNS topic for our aws services
+  sns_topic:
+    name: "alerts-{{ aws_profile }}"
+    state: absent
+
+- name: Delete Auto Scaling group for our profile
+  ec2_asg:
+    state: absent
+    name: "asg-springapp-{{ aws_profile }}"
+
+- name: Delete launch config 
+  ec2_lc:
+    name: "lc-springapp-{{ aws_profile }}"
+    state: absent  
+
 - name: Delete health check for route53 for the first region
   route53_health_check:
     state: absent
@@ -10,7 +25,7 @@
     request_interval: 10
     failure_threshold: 2
 
-- name: Delete Route53 record
+- name: Delete Route53 record for the first profile
   route53:
     state: delete
     zone: "{{ route53_zone }}"
@@ -19,6 +34,40 @@
     wait: yes
     wait_timeout: 300
     value: "{{ hostvars[(groups[aws_profile] | last )].springappelb_name }}"
+    weight: 100
+    alias: True
+    ttl: 30
+    health_check: "{{ hostvars[(groups[aws_profile] | last )].health_check_id }}"
+    identifier: "{{ aws_profile }}@www"
+    alias_evaluate_target_health: True
+    alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile] | last )].springappelb_zone }}"
+
+- name: Delete Route53 record for the second profile
+  route53:
+    state: delete
+    zone: "{{ route53_zone }}"
+    type: A
+    record: "{{ hello_dns }}"
+    wait: yes
+    wait_timeout: 300
+    value: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
+    weight: 200
+    alias: True
+    ttl: 20
+    identifier: "{{ aws_profile_2 }}@www"
+    alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_zone }}"
+  when: not aws_profile_2 == ""
+
+- name: Delete health check for route53 for the second profile
+  route53_health_check:
+    state: absent
+    fqdn: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
+    type: HTTP_STR_MATCH
+    resource_path: /hello
+    string_match: "hello"
+    request_interval: 10
+    failure_threshold: 2
+  when: not aws_profile_2 == ""
 
 - name: Delete Load Balancer for Spring App
   ec2_elb_lb:
@@ -51,3 +100,5 @@
     profile:   "{{ aws_profile }}"
     region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"    
     state: absent
+
+

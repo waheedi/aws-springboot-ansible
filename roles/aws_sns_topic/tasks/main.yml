@@ -1,0 +1,21 @@
+---
+
+- name: Create alert SNS topic for our aws services
+  sns_topic:
+    name: "alerts-{{ aws_profile }}"
+    state: present
+    display_name: "alarm SNS topic"
+    delivery_policy:
+      http:
+        defaultHealthyRetryPolicy:
+            minDelayTarget: 2
+            maxDelayTarget: 4
+            numRetries: 5
+            numMaxDelayRetries: 5
+            backoffFunction: "exponential"
+        disableSubscriptionOverrides: True
+        defaultThrottlePolicy:
+            maxReceivesPerSecond: 10
+    subscriptions:
+      - endpoint: "{{ topic_alerts_email }}"
+        protocol: email    

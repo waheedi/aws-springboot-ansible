@@ -28,6 +28,14 @@
     src: ssh_config
     dest: "~/.ssh/config"
 
-- name: Pause, let's add the public keys to our git service
-  pause: seconds="120"
+- name: Add gitkey to Gitlab repo deploy_keys
+  gitlab_deploy_key:
+    api_url: 
+    private_token: "{{ git_access_token }}"
+    project: "{{ (app_git_url.split(':') | last).split('.') | first }}"
+    title: "api-{{aws_profile}}"
+    state: present
+    key: "{{ pub_key['content'] | b64decode  }}"
 
+- name: Pause, let's wait for the pub key to be added to gitlab
+  pause: seconds="2"

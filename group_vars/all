@@ -24,7 +24,8 @@ ansible_user: ubuntu
 git_key: ec2-new
 app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
 branch: master
-
+git_api: "https://gitlab.com/api"
+git_access_token: "lookup('env', 'GITLAB_TOKEN')"
 #a marker to fail accidental run for create ec2s
 create_ec2_instances: yes
 
@@ -47,4 +48,9 @@ route53_zone: "saascoin.network"
 
 # a dns record for our app to be hosted on it
 hello_dns: "hello.saascoin.network"
+
+#define the email and mobile number for SNS topic alerts - used for auto scaling groups TBD
+topic_alerts_email: "waheed.barghouthi@gmail.com"
+
+
 

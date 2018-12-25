@@ -1,9 +1,0 @@
-az1: us-east-1a
-az2: us-east-1f
-instance_ids: "['i-0f9243d316ac767dc', 'i-08eeeb95f480ec7b7']"
-springappsg: 'sg-0eec672e0ee8fbb4b'
-springappelbsg: 'sg-0d7abf75ee94673d0'
-springappelb_name: 'spring-app-prod-554092520.us-east-1.elb.amazonaws.com' 
-springappelb_zone: 'Z35SXDOTRQ7X7K' 
-aws_region: us-east-1
-last_deploy: 1545646327

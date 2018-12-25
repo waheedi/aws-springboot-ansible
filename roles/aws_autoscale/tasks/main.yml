@@ -1,6 +1,8 @@
 ---
 
-- name: Create a launch config for our auto scaling instances
+#not used
+#useful when we have our custom ami with our ebs/volume
+- name: Create a launch config
   ec2_lc:
     name: "lc-springapp-{{ aws_profile }}"
     instance_id: "{{ (hostvars[(groups[aws_profile] | last )].instance_ids | first ) }}"
@@ -8,15 +10,18 @@
     security_groups: ["{{ hostvars[(groups[aws_profile] | last )].springappsg }}"]
     profile: "{{ aws_profile }}"
     instance_monitoring: yes  
+    assign_public_ip: no
 
-- name: Create Auto Scaling group for second profile
+- name: Create Auto Scaling group for our profile
   ec2_asg:
     name: "asg-springapp-{{ aws_profile }}"
     load_balancers: ["spring-app-{{ aws_profile }}"]
     launch_config_name: "lc-springapp-{{ aws_profile }}"
-    health_check_period: 60
+    health_check_period: 30
     health_check_type: ELB
+    metrics_collection: yes
     min_size: "{{ az_count }}"
-    max_size: "{{ az_count }}"
+    notification_topic: "alerts-{{ aws_profile }}"
+    max_size: "{{ az_count*2 }}"
     desired_capacity: "{{ az_count }}"
     region: "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"

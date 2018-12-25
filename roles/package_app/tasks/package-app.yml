@@ -41,6 +41,11 @@
           </activation>
       </profile>
 
+- name: Remove previous target for Spring App
+  file:
+    state: absent
+    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/target/"
+    
 - name: Package our Spring App
   command: "mvn clean package -f /var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml --activate-profiles {{ aws_profile }}"
   
@@ -62,7 +67,7 @@
     recurse: yes
     mode: u=rwX,g=rX,o=rX
 
-- name: Chown dirctory to user other than root
+- name: Chown init.d script to user other than root
   file: 
     path: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}" 
     owner: "{{ ansible_user }}"

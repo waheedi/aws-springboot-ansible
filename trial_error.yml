@@ -8,10 +8,14 @@
     instances_count: 5
     instances_ids: [1,2,3,4]
     aws_profile: sta
+    app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
   environment:
     AWS_DEFAULT_PROFILE: test
   tasks:
-
+    #- include: /Users/Waheed/projects/aws-spring-playbooks/roles/common/tasks/git-access.yml
+   - name: test split
+     debug: 
+       msg: "{{ (app_git_url.split(':') | last).split('.') | first }}"
 #  - name: Delete health check for route53 for the first region
 #    route53_health_check:
 #      state: absent
@@ -49,10 +53,10 @@
 #   pause: seconds="120"
 #   when: 'not "home" in test_response.content'
 
-  - name: test env
-    debug: msg="{{ aws_profile_2 }}"
-    when: not aws_profile_2 == ""
-
+ # - name: test env
+ #   debug: msg="{{ aws_profile_2 }}"
+ #   when: not aws_profile_2 == ""
+#
  # - name: Link python3 to python in bin dir
  #   file: 
  #     dest: /usr/bin/python

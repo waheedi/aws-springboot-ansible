@@ -1,5 +1,4 @@
 [local]
 localhost
-[prod]
-34.201.30.98
-18.232.184.31
+[prod-west]
+
