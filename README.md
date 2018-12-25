@@ -88,7 +88,7 @@ aws_secret_access_key =
 
 ---
 #### The full deploy
-- The full deploy is the starting point to run the infrastructure and the app we select for the deployment
+- The full deploy is the starting point to run the infrastructure and the app we select for the deployment, it will automatically do the below:
 1. Create the aws needed services and servers, add to our route53 zone with the desired dns name for the load balancer(s) that has been created
 2. Install python on the target machines (in a raw fashion)
 3. Install common packages as well as nginx, haproxy to load balance app instances inside the ec2 instance
