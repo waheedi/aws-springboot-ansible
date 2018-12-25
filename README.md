@@ -1,15 +1,13 @@
 # Ansible playbooks for launching and deploying a spring app
 
-The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available. 
+The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available for a basic production environment.
 
 The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile which could be an environment, an app within an environment, a region, or a combination of the three. As boto and awscli are coupled with `aws_profile` it made it more flexible to do it in this fashion. more on requirements.
 
 
-#### -
-
 --- 
 
-#### An overview of the infrastructure design
+#### An overview of the infrastructure design:
 
 ![alt text](aws-springapp-infrastructure.png)
 
@@ -21,7 +19,7 @@ The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile
 - Define our ansible variables and profiles in ~/.aws/config and ~/.aws/credentials.
 
 ---
-#### Required ansible variables with their default values:
+##### Required ansible variables:
 ```
 app_instances: 2
 app_port: 8080
@@ -41,18 +39,17 @@ rsyslog_server: localhost
 route53_zone: "saascoin.network"
 hello_dns: "hello.example.com"
 ```
-#### Optional ansible variables:
+##### Optional ansible variables:
 
 ```
 aws_profile_2: "{{ lookup('env', 'AWS_SECOND_PROFILE') | default('false') }}"
 update_version: yes
 ```
 ---
-#### Profile Configurations:
+##### Profiles configurations:
 
-Sample ~/.aws/config 
 
-```
+```Sample ~/.aws/config 
 
 [profile test-time-app]
 region = us-west-1
@@ -67,8 +64,8 @@ region = us-east-1
 region = us-west-1
 
 ```
-Sample ~/.aws/credentials
-```
+
+```Sample ~/.aws/credentials
 [test-time-app]
 aws_access_key_id = 
 aws_secret_access_key = 
@@ -77,19 +74,26 @@ aws_secret_access_key =
 
 ---
 
-#### Deploy the infrastructure and the spring app
+##### Deploy the infrastructure and the spring app:
 - Configure the IAM policies for the user running the deployment, `ec2,route53,sts,elasticloadbalancing,apigateway,autoscaling,iam` with the desired arn resources
 - We need to specify a git url for the app to clone, configure the number of app instances for each ec2 instance in the groups_vars/all file, which has all the default values for our playbooks
 - Run the full deploy: `AWS_DEFAULT_PROFILE=prod-time-app-east ansible-playbook -i hosts full_deploy.yml`, note the env variable, you can surely specify it in different ways
-- During the play you will have two copy the public keys of the new instances to the git service, it will pause for two minutes, we can automate this for github or gitlab but for now its sufficient 
+- During the play you will have to copy the public keys of the new instances to the git service, it will pause for two minutes, we can automate this for github, its already automated for gitlab
 - deploy to another region by changing the `AWS_DEFAULT_PROFILE` to the desired profile/region. `AWS_DEFAULT_PROFILE=prod-time-app-west ansible-playbook -i hosts full_deploy.yml`
 - now as we have two regions running we can use route53 to load balance/health check on two elbs that have been created, just run deploy_to_route53.yml with two env variables `AWS_DEFAULT_PROFILE=prod-time-app-west and AWS_SECOND_PROFILE=prod-time-app-east`
 - Please note, the name of aws_profile cannot contain characters that are not letters, or digits or dash (-)
 
 ---
-#### The full deploy
-- The full deploy is the starting point to run the infrastructure and the app we select for the deployment, it will automatically do the below:
+##### The full deploy:
+- The full deploy is the starting point to run the infrastructure and the app we select for the deployment
 1. Create the aws needed services and servers, add to our route53 zone with the desired dns name for the load balancer(s) that has been created
 2. Install python on the target machines (in a raw fashion)
 3. Install common packages as well as nginx, haproxy to load balance app instances inside the ec2 instance
 4. Deploy the App, clone it, package it, run it and test it
+
+---
+#### Extras:
+- there is an auto_deploy python script that takes two profiles argument and do a full deploy for them, (multi-region fault-tolerant)
+- aws-autoscale role can be used when there is a custom ami and snapshots to boot with, for autoscaling
+
+
