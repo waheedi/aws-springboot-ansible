@@ -25,6 +25,12 @@
     request_interval: 10
     failure_threshold: 2
 
+- name: Delete EC2 Key
+  ec2_key:
+    name:             "{{ aws_key_name }}"
+    profile:          "{{ aws_profile }}"
+    state:            absent
+
 - name: Delete Route53 record for the first profile
   route53:
     state: delete
@@ -100,5 +106,4 @@
     profile:   "{{ aws_profile }}"
     region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"    
     state: absent
-
 

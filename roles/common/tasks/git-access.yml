@@ -30,7 +30,7 @@
 
 - name: Add gitkey to Gitlab repo deploy_keys
   gitlab_deploy_key:
-    api_url: 
+    api_url: "{{ git_api }}"
     private_token: "{{ git_access_token }}"
     project: "{{ (app_git_url.split(':') | last).split('.') | first }}"
     title: "api-{{aws_profile}}"
