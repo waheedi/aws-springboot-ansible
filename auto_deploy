@@ -17,7 +17,7 @@ if sys.argv[1] == "create":
       print("Successfully deployed the full-deploy playbook for profile: " + profile)
 
   #running the deploy to route53 again with two regions 
-  if sys.argv[2:4]:
+  if len(sys.argv) > 2:
     cmd_route = "AWS_DEFAULT_PROFILE="+sys.argv[2]+ " AWS_SECOND_PROFILE="+sys.argv[3]+ " ansible-playbook -i hosts deploy_to_route53.yml"
     cmd_run_route = subprocess.run(cmd_route, capture_output=True, shell=True, check=True)
     if cmd_run_route.returncode != 0:
