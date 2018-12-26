@@ -41,6 +41,8 @@ hello_dns: "hello.example.com"
 git_api: "https://gitlab.com/api"
 git_access_token: "{{ lookup('env', 'GITLAB_TOKEN') }}"
 aws_distro_ami: "ubuntu/images/*/ubuntu-*-18.04-*"
+
+
 ```
 ---
 ##### Optional ansible variables:
@@ -97,10 +99,15 @@ aws_secret_access_key =
 2. Install python on the target machines (in a raw fashion)
 3. Install common packages as well as nginx, haproxy to load balance app instances inside the ec2 instance
 4. Deploy the App, clone it, package it, run it and test it
+- For Single region multi-az: `./auto_deploy create profile` or `AWS_DEFAULT_PROFILE=profile ansible-playbook -i hosts full_deploy.yml`
 
 ---
 ##### Extras:
 - An auto_deploy python script that takes multiple profiles as arguments and create a full deploy for them, (multi-region fault-tolerant) which can be run using `./auto_deploy create prod prod-west` it will automatically create a failover dns aliases for the first two regions
 - aws-autoscale role can be used when there is a custom ami to boot from, for autoscaling and faster deploy time (a custom ami for us-west-1 and us-east-1 is already created for demo purposes)
 - aws-cleanup role, to cleanup any related service or file that has been generated for a profile
+
+##### for bonus points:
+- For multi-region multi-az: `./auto_deploy create profile-east profile-west`
+- For time-app: `./auto_deploy create prod-west -e app_git_url=git@gitlab.com:waheedi/spring-time-app.git -e hello_dns=timetest.zone.com` please note the name of dns here needs to be the name defined in time_app_dns
 

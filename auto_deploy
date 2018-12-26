@@ -5,10 +5,15 @@
 import subprocess
 import sys
 
+arguments = ""
 #check that we have an args
 if sys.argv[1] == "create":
+  i = sys.argv.index("-e") 
   for profile in sys.argv[2:]:
-    cmd = "AWS_DEFAULT_PROFILE="+profile +" ansible-playbook -i hosts full_deploy.yml"
+    if i >= 0:
+      arguments = " "+" ".join(sys.argv[i:len(sys.argv)])
+    cmd = "AWS_DEFAULT_PROFILE="+profile +" ansible-playbook -i hosts full_deploy.yml" + arguments
+    print(cmd)
     cmd_run = subprocess.run(cmd, capture_output=True, shell=True, check=True)
     if cmd_run.returncode != 0:
       print(cmd_run.stderr)
@@ -17,8 +22,9 @@ if sys.argv[1] == "create":
       print("Successfully deployed the full-deploy playbook for profile: " + profile)
 
   #running the deploy to route53 again with two regions 
-  if len(sys.argv) > 2:
+  if len(sys.argv) > 2 and not sys.argv.index("-e"):
     cmd_route = "AWS_DEFAULT_PROFILE="+sys.argv[2]+ " AWS_SECOND_PROFILE="+sys.argv[3]+ " ansible-playbook -i hosts deploy_to_route53.yml"
+    print(cmd_route)
     cmd_run_route = subprocess.run(cmd_route, capture_output=True, shell=True, check=True)
     if cmd_run_route.returncode != 0:
       print(cmd_run_route.stderr)
@@ -28,12 +34,10 @@ if sys.argv[1] == "create":
 if sys.argv[1] == "delete":
   for profile in sys.argv[2:]:
     cmd = "AWS_DEFAULT_PROFILE="+profile +" ansible-playbook -i hosts aws_cleanup.yml"
+    print(cmd)
     cmd_run = subprocess.run(cmd, capture_output=True, shell=True, check=True)
     if cmd_run.returncode != 0:
       print(cmd_run.stderr)
       break
     if cmd_run.returncode == 0:
       print("Successfully deleted the infrastructure for profile: " + profile)
-
-if sys.argv[1] != "delete" or sys.argv[1] != "create":
-    print("You have to specify create or delete a profile e.g auto_deploy create " +sys.argv[1])

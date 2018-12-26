@@ -1,6 +1,6 @@
 ---
 
-#how many app instances of the Spring app we want to run in a single ec2 instace
+#how many app instances of the Spring app we want to run in a single ec2 instance
 app_instances: 2
 
 #the default base port for our app instances
@@ -46,6 +46,8 @@ aws_distro_ami: "ubuntu/images/*/ubuntu-*-18.04-*"
 #app_version will be update the Spring App version using a versioning scheme (epoch-aws-profile), maybe can be better used with mvn:commit 
 #leave undefined for auto version
 #app_version:
+
+time_app_dns: "timetest.saascoin.network"
 
 rsyslog_server: localhost
 
