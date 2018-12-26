@@ -64,7 +64,7 @@
     type: A
     record: "{{ hello_dns }}"
     value: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
-    ttl: 20
+    ttl: 30
     identifier: "{{ aws_profile_2 }}@www"
     weight: 200
     health_check: "{{ my_health_check_2.health_check.id }}"

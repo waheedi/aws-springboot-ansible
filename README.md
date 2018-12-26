@@ -20,7 +20,7 @@ The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile
 
 ---
 ##### Required ansible variables:
-```
+``` Sample group_vars/all
 app_instances: 2
 app_port: 8080
 haproxy_springapps_port: 8888
@@ -38,12 +38,17 @@ aws_instance_type: t2.micro
 rsyslog_server: localhost
 route53_zone: "saascoin.network"
 hello_dns: "hello.example.com"
+git_api: "https://gitlab.com/api"
+git_access_token: "{{ lookup('env', 'GITLAB_TOKEN') }}"
+
+
 ```
 ##### Optional ansible variables:
 
 ```
 aws_profile_2: "{{ lookup('env', 'AWS_SECOND_PROFILE') | default('false') }}"
-update_version: yes
+topic_alerts_email: "waheed.barghouthi@gmail.com"
+#app_version: "123-prod-west-1" # leave undefined for auto versioning
 ```
 ---
 ##### Profiles configurations:
@@ -93,7 +98,6 @@ aws_secret_access_key =
 
 ---
 #### Extras:
-- there is an auto_deploy python script that takes two profiles argument and do a full deploy for them, (multi-region fault-tolerant)
-- aws-autoscale role can be used when there is a custom ami and snapshots to boot with, for autoscaling
-
+- An auto_deploy python script that takes multiple profiles as arguments and create a full deploy for them, (multi-region fault-tolerant) which can be run using `./auto_deploy create prod prod-west` it will automatically create a failover dns aliases for the first two regions
+- aws-autoscale role can be used when there is a custom ami to boot from, for autoscaling and faster deploy time (a custom ami for us-west-1 and us-east-1 is already created for demo purposes)
 

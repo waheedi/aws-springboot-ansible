@@ -1,5 +1,6 @@
 ---
 
+
 - name: Check that we dont have a repo already
   stat: 
     path: "/var/www/spring_app_{{aws_profile}}_{{ item }}"

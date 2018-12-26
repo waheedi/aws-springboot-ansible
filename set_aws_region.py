@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # print export for AWS_DEFAULT_REGION to a given profile
-#usage: ./boto3_env.py 
+#usage: ./set_aws_region.py 
 
 #not used anymore :)
 import boto3

@@ -1,17 +1,17 @@
 ---
 
 - name: Stop Spring App Tomcat server
-  raw: "LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop"
+  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}_args stop"
   ignore_errors: yes
 
 - name: Start Spring App Tomcat server
-  raw: "LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start --spring.profiles.active={{ aws_profile }}"
+  command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}_args start "
   notify:
     - reload nginx
     - reload haproxy
 
 - name: Pause, let's wait a bit for the Spring app to pickup
-  pause: seconds=40
+  pause: seconds=60
 
 - name: Let's test the app and services are running
   uri:

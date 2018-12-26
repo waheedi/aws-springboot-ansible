@@ -3,16 +3,15 @@
 #how many app instances of the Spring app we want to run in a single ec2 instace
 app_instances: 2
 
-#the default base port for our 
+#the default base port for our app instances
 app_port: 8080
 
+#default haproxy front port
 haproxy_springapps_port: 8888
 
 #an aws_profile to be used to run our books
-
 aws_profile: "{{ lookup('env', 'AWS_DEFAULT_PROFILE') | default('test', true) }}"
 aws_profile_2: "{{ lookup('env', 'AWS_SECOND_PROFILE') | default('false') }}"
-
 aws_region: "{{ lookup('env', 'AWS_DEFAULT_REGION') | default('us-east-1', true) }}"
 
 #ssh key
@@ -23,9 +22,11 @@ ansible_user: ubuntu
 #git repo vars
 git_key: ec2-new
 app_git_url: "git@gitlab.com:waheedi/hello-spring-app.git"
+#https://gitlab.com/waheedi/spring-time-app
 branch: master
 git_api: "https://gitlab.com/api"
-git_access_token: "lookup('env', 'GITLAB_TOKEN')"
+git_access_token: "{{ lookup('env', 'GITLAB_TOKEN') }}"
+
 #a marker to fail accidental run for create ec2s
 create_ec2_instances: yes
 
@@ -38,8 +39,13 @@ az_count: 2
 #default ec2 instance type for our run
 aws_instance_type: t2.micro
 
-#auto update the Spring App version using a versioning scheme (epoch-aws-profile), maybe can be better used with mvn:commit 
-update_version: yes
+#a spring-boot custom ami, to run the deploy faster, leave undefined to use the aws_distro_ami
+#aws_instance_ami: 
+aws_distro_ami: "ubuntu/images/*/ubuntu-*-18.04-*"
+
+#app_version will be update the Spring App version using a versioning scheme (epoch-aws-profile), maybe can be better used with mvn:commit 
+#leave undefined for auto version
+#app_version:
 
 rsyslog_server: localhost
 
@@ -51,6 +57,3 @@ hello_dns: "hello.saascoin.network"
 
 #define the email and mobile number for SNS topic alerts - used for auto scaling groups TBD
 topic_alerts_email: "waheed.barghouthi@gmail.com"
-
-
-

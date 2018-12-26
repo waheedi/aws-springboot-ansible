@@ -13,7 +13,7 @@
 - name: Set App version for our Spring app
   set_fact:
     app_version: "{{ ansible_date_time.epoch }}-{{ aws_profile }}-{{ branch }}"
-  when: app_version is not defined
+  when: app_version is not defined  
 
 - name: Set a new version number for our Spring App
   lineinfile:
@@ -21,7 +21,7 @@
     regexp: "<version>"
     line: "<version>{{ app_version }}</version>"
     state: present
-  when: update_version
+  when: app_version is defined
 
 - name: Configure our application.proprties to include zone name property as well as other properties
   template: 
@@ -40,11 +40,6 @@
               <activeByDefault>true</activeByDefault>
           </activation>
       </profile>
-
-- name: Remove previous target for Spring App
-  file:
-    state: absent
-    path: "/var/www/spring_app_{{ aws_profile }}_{{ item }}/target/"
     
 - name: Package our Spring App
   command: "mvn clean package -f /var/www/spring_app_{{ aws_profile }}_{{ item }}/pom.xml --activate-profiles {{ aws_profile }}"
@@ -67,9 +62,18 @@
     recurse: yes
     mode: u=rwX,g=rX,o=rX
 
-- name: Chown init.d script to user other than root
-  file: 
-    path: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}" 
-    owner: "{{ ansible_user }}"
-    mode: u=rwX,g=rX,o=rX
+- name: Add a custom init.d script that takes our custom arguments 
+  template:
+    dest: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}_args"  
+    src: "spring-with-args"
+    mode: "a+x"
+    
+- name: Auto start our spring app on boot
+  command: "update-rc.d spring_app_{{ aws_profile }}_{{ item }}_args defaults"
+  args:
+    chdir: "/etc/init.d/"
 
+- name: Auto start our spring app on boot
+  command: "update-rc.d spring_app_{{ aws_profile }}_{{ item }}_args enable 5"
+  args:
+    chdir: "/etc/init.d/"

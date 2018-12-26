@@ -1,0 +1,30 @@
+#!/bin/sh -e
+
+### BEGIN INIT INFO
+# Provides:          spring_app_{{ aws_profile }}_{{ item }}
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Spring-boot app with our custom arguments
+# Description:       Intended to start Spring-boot app on system startup.
+### END INIT INFO
+
+set -e
+COMMAND=$1
+PROFILE="--spring.profiles.active={{ aws_profile }}"
+case $COMMAND in
+start)
+    LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} $COMMAND $PROFILE
+    ;;
+stop)
+    /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} $COMMAND
+    ;;
+restart)
+    LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop
+    /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start $PROFILE
+    ;;
+*)
+    exit 1
+esac

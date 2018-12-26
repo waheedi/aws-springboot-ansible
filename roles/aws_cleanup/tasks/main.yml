@@ -48,6 +48,17 @@
     alias_evaluate_target_health: True
     alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile] | last )].springappelb_zone }}"
 
+- name: Delete health check for route53 for the second profile
+  route53_health_check:
+    state: absent
+    fqdn: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
+    type: HTTP_STR_MATCH
+    resource_path: /hello
+    string_match: "hello"
+    request_interval: 10
+    failure_threshold: 2
+  when: not aws_profile_2 == ""
+
 - name: Delete Route53 record for the second profile
   route53:
     state: delete
@@ -59,20 +70,10 @@
     value: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
     weight: 200
     alias: True
-    ttl: 20
+    ttl: 
+    health_check: "{{ hostvars[(groups[aws_profile_2] | last )].health_check_id }}"
     identifier: "{{ aws_profile_2 }}@www"
     alias_hosted_zone_id: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_zone }}"
-  when: not aws_profile_2 == ""
-
-- name: Delete health check for route53 for the second profile
-  route53_health_check:
-    state: absent
-    fqdn: "{{ hostvars[(groups[aws_profile_2] | last )].springappelb_name }}"
-    type: HTTP_STR_MATCH
-    resource_path: /hello
-    string_match: "hello"
-    request_interval: 10
-    failure_threshold: 2
   when: not aws_profile_2 == ""
 
 - name: Delete Load Balancer for Spring App
@@ -107,3 +108,21 @@
     region:  "{{ hostvars[(groups[aws_profile] | last )].aws_region }}"    
     state: absent
 
+- name: Delete group_vars for our prfile
+  file: 
+    path: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
+    state: absent
+
+- name: remove profile inventory to hosts
+  lineinfile: 
+    path: "{{ inventory_dir }}/hosts"
+    regexp: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ groups[aws_profile] }}"
+
+- name: remove profile inventory to hosts
+  lineinfile: 
+    path: "{{ inventory_dir }}/hosts"
+    regexp: ".{{ aws_profile }}."
+    state: absent

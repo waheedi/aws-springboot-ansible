@@ -5,14 +5,16 @@
     profile: "{{ aws_profile }}"
     owners:  099720109477
     filters: 
-      name: "ubuntu/images/*/ubuntu-*-18.04-*"
+      name: "{{ aws_distro_ami }}"
       root-device-type: "ebs"
       state: "available"
   register: ami_find
+  when: spring_ami_snapshopt_id is not defined
 
 - name: Set AMI ID in a fact
   set_fact:
-    aws_instance_ami: "{{ ami_find.images | last | json_query('image_id') }}"  
+    aws_instance_ami: "{{ ami_find.images | last | json_query('image_id') }}" 
+  when: spring_ami_snapshopt_id is not defined
 
 - name: Get azs that are available in our region
   aws_az_facts:
