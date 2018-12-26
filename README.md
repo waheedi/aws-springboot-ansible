@@ -40,15 +40,17 @@ route53_zone: "saascoin.network"
 hello_dns: "hello.example.com"
 git_api: "https://gitlab.com/api"
 git_access_token: "{{ lookup('env', 'GITLAB_TOKEN') }}"
-
-
+aws_distro_ami: "ubuntu/images/*/ubuntu-*-18.04-*"
 ```
+---
 ##### Optional ansible variables:
 
 ```
 aws_profile_2: "{{ lookup('env', 'AWS_SECOND_PROFILE') | default('false') }}"
 topic_alerts_email: "waheed.barghouthi@gmail.com"
 #app_version: "123-prod-west-1" # leave undefined for auto versioning
+#aws_instance_ami: 
+
 ```
 ---
 ##### Profiles configurations:
@@ -97,7 +99,8 @@ aws_secret_access_key =
 4. Deploy the App, clone it, package it, run it and test it
 
 ---
-#### Extras:
+##### Extras:
 - An auto_deploy python script that takes multiple profiles as arguments and create a full deploy for them, (multi-region fault-tolerant) which can be run using `./auto_deploy create prod prod-west` it will automatically create a failover dns aliases for the first two regions
 - aws-autoscale role can be used when there is a custom ami to boot from, for autoscaling and faster deploy time (a custom ami for us-west-1 and us-east-1 is already created for demo purposes)
+- aws-cleanup role, to cleanup any related service or file that has been generated for a profile
 
