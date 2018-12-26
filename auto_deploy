@@ -25,7 +25,7 @@ if sys.argv[1] == "create":
     if cmd_run_route.returncode == 0:
       print("Successfully deployed the route53 for both regions on profile: " + sys.argv[2] + " and profile: "+ sys.argv[3])
 
-if sys.argv[1] == 'delete':
+if sys.argv[1] == "delete":
   for profile in sys.argv[2:]:
     cmd = "AWS_DEFAULT_PROFILE="+profile +" ansible-playbook -i hosts aws_cleanup.yml"
     cmd_run = subprocess.run(cmd, capture_output=True, shell=True, check=True)
@@ -34,3 +34,6 @@ if sys.argv[1] == 'delete':
       break
     if cmd_run.returncode == 0:
       print("Successfully deleted the infrastructure for profile: " + profile)
+
+if sys.argv[1] != "delete" or sys.argv[1] != "create":
+    print("You have to specify create or delete a profile e.g auto_deploy create " +sys.argv[1])

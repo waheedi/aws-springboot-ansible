@@ -1,6 +1,5 @@
 ---
 
-#not used
 #useful when we have our custom ami with our ebs/volume
 - name: Create a launch config
   ec2_lc:
