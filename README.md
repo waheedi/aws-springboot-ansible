@@ -1,4 +1,4 @@
-# Ansible playbooks for launching and deploying a spring app
+# Ansible playbooks for launching and deploying a Spring-boot apps
 
 The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available for a basic production environment.
 
@@ -13,7 +13,7 @@ The whole setup is bound to the `AWS_DEFAULT_PROFILE`. Theory, we have a profile
 
 ---
 
-### Requirements:
+#### Requirements:
 
 - packages that we need installed: `python3, ansible > 2.4 , boto, boto3, botocore, awscli`
 - Define our ansible variables and profiles in ~/.aws/config and ~/.aws/credentials.
