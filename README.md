@@ -94,7 +94,7 @@ aws_secret_access_key =
 
 ---
 ##### The full deploy:
-- The full deploy is the starting point to run the infrastructure and the app we select for the deployment
+- The full deploy is the starting point to run the infrastructure and the app we select for the deployment, by executing the below:
 1. Create the aws needed services and servers, add to our route53 zone with the desired dns name for the load balancer(s) that has been created
 2. Install python on the target machines (in a raw fashion)
 3. Install common packages as well as nginx, haproxy to load balance app instances inside the ec2 instance
@@ -106,6 +106,8 @@ aws_secret_access_key =
 - An auto_deploy python script that takes multiple profiles as arguments and create a full deploy for them, (multi-region fault-tolerant) which can be run using `./auto_deploy create prod prod-west` it will automatically create a failover dns aliases for the first two regions
 - aws-autoscale role can be used when there is a custom ami to boot from, for autoscaling and faster deploy time (a custom ami for us-west-1 and us-east-1 is already created for demo purposes)
 - aws-cleanup role, to cleanup any related service or file that has been generated for a profile
+- auto_deploy support extra arguments like `-e aws_profile=time-app-west --start-at-task="\"minimal_python : Install python for Ansible use (Facts gathering)"\"` but they need to be the last arguments provided, like `./auto-deploy create profile -e ...`
+- auto_deploy support takes the first argument as action, available actions are create: to make a full deployment, delete: will delete all generated aws services and files, route: will route two regions with aliases to the same DNS name (failover scenario)
 
 ##### for bonus points:
 - For multi-region multi-az: `./auto_deploy create profile-east profile-west`

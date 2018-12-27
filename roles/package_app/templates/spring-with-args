@@ -19,11 +19,11 @@ start)
     LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} $COMMAND $PROFILE
     ;;
 stop)
-    /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} $COMMAND
+    LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} $COMMAND
     ;;
 restart)
     LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} stop
-    /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start $PROFILE
+    LOG_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} PID_FOLDER=/var/www/spring_app_{{ aws_profile }}_{{ item }} /etc/init.d/spring_app_{{ aws_profile }}_{{ item }} start $PROFILE
     ;;
 *)
     exit 1

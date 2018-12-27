@@ -4,6 +4,11 @@
   command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}_args stop"
   ignore_errors: yes
 
+- name: Ensure Spring App Tomcat server is down
+  command: netstat -ntpl | grep "{{ app_port+item }}" | tail -n 1 | awk '{print $7 }' | awk '{gsub(/\/java/,"")}1' | kill $(cat)
+  become_user: root
+  ignore_errors: yes
+
 - name: Start Spring App Tomcat server
   command: "/etc/init.d/spring_app_{{ aws_profile }}_{{ item }}_args start "
   notify:
