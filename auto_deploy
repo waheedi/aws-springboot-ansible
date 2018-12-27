@@ -8,7 +8,11 @@ import sys
 arguments = ""
 #check that we have an args
 if sys.argv[1] == "create":
-  i = sys.argv.index("-e") 
+  try:
+    i = sys.argv.index("-e")
+  except ValueError:
+    i = -1
+    print("No arguments present, continuing")
   for profile in sys.argv[2:]:
     if i >= 0:
       arguments = " "+" ".join(sys.argv[i:len(sys.argv)])

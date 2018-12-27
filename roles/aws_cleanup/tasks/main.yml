@@ -113,7 +113,7 @@
     path: "{{ inventory_dir }}/group_vars/{{ aws_profile }}" 
     state: absent
 
-- name: remove profile inventory to hosts
+- name: remove profile from hosts inventory
   lineinfile: 
     path: "{{ inventory_dir }}/hosts"
     regexp: "{{ item }}"
@@ -121,8 +121,8 @@
   with_items:
     - "{{ groups[aws_profile] }}"
 
-- name: remove profile inventory to hosts
+- name: remove profile hosts inventory
   lineinfile: 
     path: "{{ inventory_dir }}/hosts"
-    regexp: ".{{ aws_profile }}."
+    regexp: "^.{{ aws_profile }}.$"
     state: absent
