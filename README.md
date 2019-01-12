@@ -108,8 +108,4 @@ aws_secret_access_key =
 - aws-cleanup role, to cleanup any related service or file that has been generated for a profile
 - auto_deploy support extra arguments like `-e aws_profile=time-app-west --start-at-task="\"minimal_python : Install python for Ansible use (Facts gathering)"\"` but they need to be the last arguments provided, like `./auto-deploy create profile -e ...`
 - auto_deploy support takes the first argument as action, available actions are create: to make a full deployment, delete: will delete all generated aws services and files, route: will route two regions with aliases to the same DNS name (failover scenario)
-
-##### for bonus points:
 - For multi-region multi-az: `./auto_deploy create profile-east profile-west`
-- For time-app: `./auto_deploy create prod-west -e app_git_url=git@gitlab.com:waheedi/spring-time-app.git -e hello_dns=timetest.zone.com` please note the name of dns here needs to be the name defined in time_app_dns
-
