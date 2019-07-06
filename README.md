@@ -1,4 +1,4 @@
-# Ansible playbooks for launching and deploying a Spring-boot apps
+# Ansible playbooks for launching and deploying Spring-boot apps
 
 The playbooks are designed to dynamically work with almost any spring app, the infrastructure is also built to be scalable, fault-tolerant and highly available for a basic production environment.
 
